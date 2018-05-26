@@ -13,17 +13,17 @@ public class ProjectTask extends Task {
 
     @Getter
     @Setter
-    String id;
+    private String id;
 
     @Getter
     @Setter
-    Project project;
+    private Project project;
 
     @Getter
     @Setter
-    ProjectTask predecessor;
+    private ProjectTask predecessor;
 
     @Getter
     @Setter
-    List<ProjectTask> successor;
+    private List<ProjectTask> successor;
 }

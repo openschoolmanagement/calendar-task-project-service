@@ -1,4 +1,4 @@
-package open.schoolmanagement.time.calendartaskprojectservice.model.task;
+package open.schoolmanagement.time.calendartaskprojectservice.model.calendar.vacation;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -8,28 +8,26 @@ import lombok.Setter;
 import java.util.Date;
 
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-public class ToDo {
+public class Vacation {
+
+
 
 
     @Getter
     @Setter
-    private String id;
-
+    private Date start;
     @Getter
     @Setter
-    private String name;
-
+    private Date end;
     @Getter
     @Setter
-    private Date dueDate;
-
+    private int year;
     @Getter
     @Setter
-    private String description;
-
+    private String stateCode;
     @Getter
     @Setter
-    private String reminder;
+    private String slug;
 
 
 }

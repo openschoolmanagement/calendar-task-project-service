@@ -4,22 +4,21 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class Person {
 
     @Getter
     @Setter
-    String emailAddress;
+    private String emailAddress; //ID
 
     @Getter
     @Setter
-    String firstName;
+    private String firstName;
 
     @Getter
     @Setter
-    String lastName;
-
-
+    private String lastName;
 
 
 }

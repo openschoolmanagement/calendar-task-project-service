@@ -12,25 +12,25 @@ public class Project {
 
     @Getter
     @Setter
-    String id;
+    private String id;
     @Getter
     @Setter
-    String name;
+    private String name;
     @Getter
     @Setter
-    String Description;
+    private String Description;
     @Getter
     @Setter
-    Person responsible;
+    private Person responsible;
     @Getter
     @Setter
-    Date start;
+    private Date start;
     @Getter
     @Setter
-    Date end;
+    private Date end;
 
     @Getter
     @Setter
-    List<ProjectTask> projectTasks;
+    private List<ProjectTask> projectTasks;
 
 }

@@ -1,4 +1,4 @@
-package open.schoolmanagement.time.calendartaskprojectservice.model.task;
+package open.schoolmanagement.time.calendartaskprojectservice.model.lending;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -9,35 +9,35 @@ import open.schoolmanagement.time.calendartaskprojectservice.model.person.Person
 import java.util.Date;
 
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-public class Task {
+public class LendObject {
 
-    @Getter
-    @Setter
-    private String id;
     @Getter
     @Setter
     private String name;
-    @Getter
-    @Setter
-    private String description;
-    @Getter
-    @Setter
-    private Date deadline;
-    @Getter
-    @Setter
-    private Date started;
-    @Getter
-    @Setter
-    private Date reminder;
-    @Getter
-    @Setter
-    private Person taskGiver;
-    @Getter
-    @Setter
-    private Person taskExecutor;
 
-    Task() {
+    @Getter
+    @Setter
+    private String owner;
 
-    }
+    @Getter
+    @Setter
+    private Person ownerOptional;
+
+    @Getter
+    @Setter
+    private Person lendByWhom;
+
+    @Getter
+    @Setter
+    private Date whenLend;
+
+    @Getter
+    @Setter
+    private Date dueToReturn;
+
+    @Getter
+    @Setter
+    private boolean returned;
+
 
 }
