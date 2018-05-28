@@ -12,9 +12,11 @@
  */
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
+import lombok.Builder;
 import lombok.Getter;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.Teacher;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,6 +27,8 @@ import java.util.Collection;
 import java.util.UUID;
 
 @Table(name = "teachertimetable")
+@Entity
+@Builder
 public class TeacherTimeTable {
 
     @Getter

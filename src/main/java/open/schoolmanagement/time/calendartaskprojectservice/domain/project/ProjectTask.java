@@ -1,9 +1,11 @@
 package open.schoolmanagement.time.calendartaskprojectservice.domain.project;
 
+import lombok.Builder;
 import lombok.Getter;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.task.Task;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,6 +15,8 @@ import javax.persistence.Table;
 import java.util.List;
 import java.util.UUID;
 
+@Builder
+@Entity
 @Table(name = "projecttask")
 public class ProjectTask {
 

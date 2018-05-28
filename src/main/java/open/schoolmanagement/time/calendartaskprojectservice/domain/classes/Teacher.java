@@ -18,6 +18,7 @@ import lombok.Getter;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable.Subject;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,6 +29,7 @@ import java.util.Collection;
 import java.util.UUID;
 
 @Builder
+@Entity
 @Table(name = "teacher")
 public class Teacher {
 

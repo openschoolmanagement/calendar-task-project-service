@@ -17,6 +17,7 @@ import lombok.Builder;
 import lombok.Getter;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.SchoolClass;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,6 +28,7 @@ import java.util.Collection;
 import java.util.UUID;
 
 @Builder
+@Entity
 @Table(name = "classtimetable")
 public class ClassTimeTable {
 

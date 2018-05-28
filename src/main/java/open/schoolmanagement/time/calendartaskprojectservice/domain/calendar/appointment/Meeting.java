@@ -5,6 +5,7 @@ import lombok.Getter;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,6 +18,7 @@ import java.util.UUID;
 
 @Table(name = "meeting")
 @Builder
+@Entity
 public class Meeting {
 
     @Getter

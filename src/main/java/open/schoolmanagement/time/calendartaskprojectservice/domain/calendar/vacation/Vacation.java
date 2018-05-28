@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Builder
+@Entity
 @Table(name = "vacation")
 public class Vacation {
 
