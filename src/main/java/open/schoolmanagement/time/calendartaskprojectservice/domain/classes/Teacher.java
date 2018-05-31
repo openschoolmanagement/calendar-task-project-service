@@ -36,7 +36,7 @@ public class Teacher {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  private Long id;
 
   @Getter
   @OneToOne(mappedBy = "person")

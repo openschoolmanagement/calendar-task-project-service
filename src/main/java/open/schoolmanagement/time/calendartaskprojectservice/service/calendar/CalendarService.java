@@ -39,11 +39,12 @@ public class CalendarService {
    **/
   public Appointment createAppointment(Date start, Date end, String subject, String description) {
 
+    
     long duration = end.getTime() - start.getTime();
 
     Appointment appointment = Appointment.builder()
         .start(start).end(end).duration(duration)
-        .subject(subject).description(description).forWhom(null).build();
+        .appointmentSubject(subject).description(description).owner(null).build();
     //TODO Create Person out of current principal
 
     appointment = appointmentRepository.<Appointment>save(appointment);

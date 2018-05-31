@@ -31,7 +31,8 @@ public class Person {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  @Column(name = "person_id", nullable = false)
+  private Long personId;
 
   @Getter
   @Column(name = "emailaddress")

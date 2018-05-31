@@ -22,6 +22,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,7 +37,7 @@ public class PublicHoliday implements Constants {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  private Long id;
 
   @Getter
   @Column(name = "day")
@@ -47,7 +48,7 @@ public class PublicHoliday implements Constants {
   private String name;
 
   @Getter
-  @OneToMany(mappedBy = "state",
+  @OneToOne(mappedBy = "state",
       fetch = FetchType.LAZY)
-  private Collection<State> affectedCountriesInStateCode; //
+  private State affectedCountryInStateCode; //
 }

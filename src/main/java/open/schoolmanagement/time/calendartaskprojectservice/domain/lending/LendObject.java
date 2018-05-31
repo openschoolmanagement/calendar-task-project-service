@@ -34,7 +34,7 @@ public class LendObject {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  private Long id;
 
   @Getter
   @Column(name = "name")

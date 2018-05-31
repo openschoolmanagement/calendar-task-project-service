@@ -34,7 +34,7 @@ public class TeacherTimeTable {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  private Long id;
 
   @Getter
   @OneToOne(mappedBy = "teacher")

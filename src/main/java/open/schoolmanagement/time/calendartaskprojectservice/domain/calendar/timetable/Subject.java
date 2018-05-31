@@ -30,7 +30,7 @@ public class Subject {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  private Long id;
 
   @Getter
   @Column(name = "name")

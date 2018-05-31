@@ -58,7 +58,7 @@ public class State {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  private Long id;
   @Getter
   @Column(name = "name")
   String name; //Saarland

@@ -22,6 +22,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 
 @Builder
 @Entity
@@ -31,7 +32,7 @@ public class ToDo {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  private Long id;
 
   @Getter
   @Column(name = "name")
@@ -50,7 +51,7 @@ public class ToDo {
   private Date reminder;
 
   @Getter
-  @Column(name = "user")
-  private UUID userHash;
+  @Column(name = "owner")
+  private Person owner;
 
 }
