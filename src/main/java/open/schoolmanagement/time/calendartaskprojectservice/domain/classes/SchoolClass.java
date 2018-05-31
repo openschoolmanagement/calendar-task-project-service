@@ -10,35 +10,35 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
+
 package open.schoolmanagement.time.calendartaskprojectservice.domain.classes;
 
-import lombok.Builder;
-import lombok.Getter;
-
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Getter;
 
 @Builder
 @Entity
 @Table(name = "schoolclass")
 public class SchoolClass {
 
-    @Getter
-    @Id
-    @GeneratedValue
-    private UUID id;
+  @Getter
+  @Id
+  @GeneratedValue
+  private UUID id;
 
-    @Getter
-    @Column(name = "name")
-    private String name;
+  @Getter
+  @Column(name = "name")
+  private String name;
 
-    @Getter
-    @OneToOne(mappedBy = "teacher")
-    private Teacher classTeacher;
+  @Getter
+  @OneToOne(mappedBy = "teacher")
+  private Teacher classTeacher;
 
 }

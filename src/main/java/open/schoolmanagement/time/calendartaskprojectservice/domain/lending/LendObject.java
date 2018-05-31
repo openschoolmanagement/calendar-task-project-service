@@ -13,10 +13,8 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.lending;
 
-import lombok.Builder;
-import lombok.Getter;
-import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
-
+import java.util.Date;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,42 +22,43 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.Date;
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Getter;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 
 @Builder
 @Entity
 @Table(name = "lendboject")
 public class LendObject {
 
-    @Getter
-    @Id
-    @GeneratedValue
-    private UUID id;
+  @Getter
+  @Id
+  @GeneratedValue
+  private UUID id;
 
-    @Getter
-    @Column(name = "name")
-    private String name;
+  @Getter
+  @Column(name = "name")
+  private String name;
 
-    @Getter
-    @OneToOne(mappedBy = "owner", fetch = FetchType.LAZY)
-    private Person owner;
+  @Getter
+  @OneToOne(mappedBy = "owner", fetch = FetchType.LAZY)
+  private Person owner;
 
-    @Getter
-    @OneToOne(mappedBy = "lendbywhom", fetch = FetchType.LAZY)
-    private Person lendByWhom;
+  @Getter
+  @OneToOne(mappedBy = "lendbywhom", fetch = FetchType.LAZY)
+  private Person lendByWhom;
 
-    @Getter
-    @Column(name = "whenlend")
-    private Date whenLend;
+  @Getter
+  @Column(name = "whenlend")
+  private Date whenLend;
 
-    @Getter
-    @Column(name = "duetoreturn")
-    private Date dueToReturn;
+  @Getter
+  @Column(name = "duetoreturn")
+  private Date dueToReturn;
 
-    @Getter
-    @Column(name = "returned")
-    private boolean returned;
+  @Getter
+  @Column(name = "returned")
+  private boolean returned;
 
 
 }

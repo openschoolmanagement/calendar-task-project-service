@@ -15,15 +15,14 @@
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.vacation;
 
 
-import lombok.Builder;
-import lombok.Getter;
-
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Getter;
 
 @Builder
 @Entity
@@ -31,48 +30,45 @@ import java.util.UUID;
 public class State {
 
 
-    /*
+  /* *
+  * Bundesland    Code
+  * Baden-Württemberg Baden-Württemberg  DE-BW
+  * Bayern Bayern   DE-BY
+  * Berlin Berlin  DE-BE
+  * Brandenburg Brandenburg DE-BB
+  * Bremen Bremen  DE-HB
+  * Hamburg Hamburg DE-HH
+  * Hessen Hessen DE-HE
+  * Mecklenburg-Vorpommern Mecklenburg-Vorpommern DE-MV
+  * Niedersachsen Niedersachsen DE-NI
+  * Nordrhein-Westfalen Nordrhein-Westfalen DE-NW
+  * Rheinland-Pfalz Rheinland-Pfalz DE-RP
+  * Saarland Saarland DE-SL
+  * Sachsen Sachsen DE-SN
+  * Sachsen-Anhalt Sachsen-Anhalt  DE-ST
+  * Schleswig-Holstein Schleswig-Holstein DE-SH
+  * Thüringen Thüringen DE-TH
+  *
+  * https://de.wikipedia.org/wiki/ISO_3166-2
+  * https://de.wikipedia.org/wiki/ISO_3166#ISO_3166-1
+  *
+  * Also Check https://www.ferien-api.de/
+  * */
 
+  @Getter
+  @Id
+  @GeneratedValue
+  private UUID id;
+  @Getter
+  @Column(name = "name")
+  String name; //Saarland
+  @Getter
+  @Column(name = "isocode")
+  String isoCode; //DE-SL
+  @Getter
+  @Column(name = "isocodeshort")
+  String isoCodeShort; //SL
 
-        Bundesland	Code
-        Baden-Württemberg Baden-Württemberg	DE-BW
-        Bayern Bayern	DE-BY
-        Berlin Berlin	DE-BE
-        Brandenburg Brandenburg	DE-BB
-        Bremen Bremen	DE-HB
-        Hamburg Hamburg	DE-HH
-        Hessen Hessen	DE-HE
-        Mecklenburg-Vorpommern Mecklenburg-Vorpommern	DE-MV
-        Niedersachsen Niedersachsen	DE-NI
-        Nordrhein-Westfalen Nordrhein-Westfalen	DE-NW
-        Rheinland-Pfalz Rheinland-Pfalz	DE-RP
-        Saarland Saarland	DE-SL
-        Sachsen Sachsen	DE-SN
-        Sachsen-Anhalt Sachsen-Anhalt	DE-ST
-        Schleswig-Holstein Schleswig-Holstein	DE-SH
-        Thüringen Thüringen	DE-TH
-
-
-    https://de.wikipedia.org/wiki/ISO_3166-2
-    https://de.wikipedia.org/wiki/ISO_3166#ISO_3166-1
-
-      Also Check https://www.ferien-api.de/
-
-     */
-
-    @Getter
-    @Column(name = "whenlend")
-    String name; //Saarland
-    @Getter
-    @Column(name = "whenlend")
-    String isoCode; //DE-SL
-    @Getter
-    @Column(name = "whenlend")
-    String isoCodeShort; //SL
-    @Getter
-    @Id
-    @GeneratedValue
-    private UUID id;
 
 
 }

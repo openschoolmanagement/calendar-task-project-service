@@ -10,14 +10,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
+
 package open.schoolmanagement.time.calendartaskprojectservice.domain.classes;
 
 
-import lombok.Builder;
-import lombok.Getter;
-import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable.Subject;
-import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
-
+import java.util.Collection;
+import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,26 +23,28 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.Collection;
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Getter;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable.Subject;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 
 @Builder
 @Entity
 @Table(name = "teacher")
 public class Teacher {
 
-    @Getter
-    @Id
-    @GeneratedValue
-    private UUID id;
+  @Getter
+  @Id
+  @GeneratedValue
+  private UUID id;
 
-    @Getter
-    @OneToOne(mappedBy = "person")
-    private Person person;
+  @Getter
+  @OneToOne(mappedBy = "person")
+  private Person person;
 
-    @Getter
-    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
-    private Collection<Subject> subjects;
+  @Getter
+  @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
+  private Collection<Subject> subjects;
 
 
 }

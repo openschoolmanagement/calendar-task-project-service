@@ -13,16 +13,14 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.person;
 
-import lombok.Builder;
-import lombok.Getter;
-
-
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Getter;
 
 @Builder
 @Entity
@@ -30,22 +28,22 @@ import java.util.UUID;
 public class Person {
 
 
-    @Getter
-    @Id
-    @GeneratedValue
-    private UUID id;
+  @Getter
+  @Id
+  @GeneratedValue
+  private UUID id;
 
-    @Getter
-    @Column(name = "emailaddress")
-    private String emailAddress;
+  @Getter
+  @Column(name = "emailaddress")
+  private String emailAddress;
 
-    @Getter
-    @Column(name = "firstname")
-    private String firstName;
+  @Getter
+  @Column(name = "firstname")
+  private String firstName;
 
-    @Getter
-    @Column(name = "lastname")
-    private String lastName;
+  @Getter
+  @Column(name = "lastname")
+  private String lastName;
 
 
 }

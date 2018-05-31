@@ -10,57 +10,57 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
+
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
-import lombok.Builder;
-import lombok.Getter;
-import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.SchoolClass;
-import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.Teacher;
-
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Getter;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.SchoolClass;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.Teacher;
 
 @Builder
 @Entity
 @Table(name = "timetableentry")
 public class TimeTableEntry {
 
-    @Getter
-    @Id
-    @GeneratedValue
-    private UUID id;
+  @Getter
+  @Id
+  @GeneratedValue
+  private UUID id;
 
-    @Getter
-    @Column(name = "course")
-    private String course;
+  @Getter
+  @Column(name = "course")
+  private String course;
 
-    @Getter
-    @OneToOne(mappedBy = "schoolclass")
-    private SchoolClass schoolClass;
+  @Getter
+  @OneToOne(mappedBy = "schoolclass")
+  private SchoolClass schoolClass;
 
-    @Getter
-    @OneToOne(mappedBy = "subject")
-    private Subject subject;
+  @Getter
+  @OneToOne(mappedBy = "subject")
+  private Subject subject;
 
-    @Getter
-    @OneToOne(mappedBy = "teacher")
-    private Teacher teacher;
+  @Getter
+  @OneToOne(mappedBy = "teacher")
+  private Teacher teacher;
 
-    @Getter
-    @Column(name = "room")
-    private String room;
+  @Getter
+  @Column(name = "room")
+  private String room;
 
-    @Getter
-    @Column(name = "weekday")
-    private WeekDay weekDay;
+  @Getter
+  @Column(name = "weekday")
+  private WeekDay weekDay;
 
-    @Getter
-    @Column(name = "schoolhour")
-    private SchoolHour schoolHour;
+  @Getter
+  @Column(name = "schoolhour")
+  private SchoolHour schoolHour;
 
 }

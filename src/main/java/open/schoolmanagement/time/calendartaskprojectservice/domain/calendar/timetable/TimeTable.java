@@ -13,9 +13,9 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
-import lombok.Builder;
-import lombok.Getter;
-
+import java.util.Collection;
+import java.util.Date;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,35 +23,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.Collection;
-import java.util.Date;
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Getter;
 
 @Builder
 @Entity
 @Table(name = "timetable")
 public class TimeTable {
 
-    @Getter
-    @Id
-    @GeneratedValue
-    private UUID id;
+  @Getter
+  @Id
+  @GeneratedValue
+  private UUID id;
 
-    @Getter
-    @Column(name = "name")
-    private String name;
+  @Getter
+  @Column(name = "name")
+  private String name;
 
-    @Getter
-    @Column(name = "validfrom")
-    private Date validFrom;
+  @Getter
+  @Column(name = "validfrom")
+  private Date validFrom;
 
-    @Getter
-    @Column(name = "validto")
-    private Date validTo;
+  @Getter
+  @Column(name = "validto")
+  private Date validTo;
 
-    @Getter
-    @OneToMany(mappedBy = "timetableentry", fetch = FetchType.LAZY)
-    private Collection<TimeTableEntry> timeTableEntries;
+  @Getter
+  @OneToMany(mappedBy = "timetableentry", fetch = FetchType.LAZY)
+  private Collection<TimeTableEntry> timeTableEntries;
 
 
 }

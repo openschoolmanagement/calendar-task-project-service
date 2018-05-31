@@ -13,10 +13,9 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.vacation;
 
-import lombok.Builder;
-import lombok.Getter;
-import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.Constants;
-
+import java.util.Collection;
+import java.util.Date;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,9 +23,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.Collection;
-import java.util.Date;
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Getter;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.Constants;
 
 @Builder
 @Entity
@@ -34,21 +33,21 @@ import java.util.UUID;
 public class PublicHoliday implements Constants {
 
 
-    @Getter
-    @Id
-    @GeneratedValue
-    private UUID id;
+  @Getter
+  @Id
+  @GeneratedValue
+  private UUID id;
 
-    @Getter
-    @Column(name = "day")
-    private  Date day;
+  @Getter
+  @Column(name = "day")
+  private Date day;
 
-    @Getter
-    @Column(name = "name")
-    private  String name;
+  @Getter
+  @Column(name = "name")
+  private String name;
 
-    @Getter
-    @OneToMany(mappedBy = "state",
-            fetch = FetchType.LAZY)
-    private Collection<State> affectedCountriesInStateCode; //
+  @Getter
+  @OneToMany(mappedBy = "state",
+      fetch = FetchType.LAZY)
+  private Collection<State> affectedCountriesInStateCode; //
 }

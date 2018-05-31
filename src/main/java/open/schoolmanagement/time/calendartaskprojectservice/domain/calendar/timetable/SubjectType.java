@@ -10,10 +10,11 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
+
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
 public enum SubjectType {
 
-    CLASSES,TEAM
+  CLASSES, TEAM
 
 }

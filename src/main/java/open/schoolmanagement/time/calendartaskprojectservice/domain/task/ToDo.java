@@ -13,45 +13,44 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.task;
 
-import lombok.Builder;
-import lombok.Getter;
-
+import java.util.Date;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Getter;
 
 @Builder
 @Entity
 @Table(name = "todo")
 public class ToDo {
 
-    @Getter
-    @Id
-    @GeneratedValue
-    private UUID id;
+  @Getter
+  @Id
+  @GeneratedValue
+  private UUID id;
 
-    @Getter
-    @Column(name = "name")
-    private String name;
+  @Getter
+  @Column(name = "name")
+  private String name;
 
-    @Getter
-    @Column(name = "duedate")
-    private Date dueDate;
+  @Getter
+  @Column(name = "duedate")
+  private Date dueDate;
 
-    @Getter
-    @Column(name = "description")
-    private String description;
+  @Getter
+  @Column(name = "description")
+  private String description;
 
-    @Getter
-    @Column(name = "reminder")
-    private Date reminder;
+  @Getter
+  @Column(name = "reminder")
+  private Date reminder;
 
-    @Getter
-    @Column(name = "user")
-    private UUID userHash;
+  @Getter
+  @Column(name = "user")
+  private UUID userHash;
 
 }

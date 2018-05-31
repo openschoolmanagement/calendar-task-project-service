@@ -13,10 +13,9 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.project;
 
-import lombok.Builder;
-import lombok.Getter;
-import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
-
+import java.util.Collection;
+import java.util.Date;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,42 +23,42 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.Collection;
-import java.util.Date;
-import java.util.UUID;
+import lombok.Builder;
+import lombok.Getter;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 
 @Builder
 @Entity
 @Table(name = "project")
 public class Project {
 
-    @Getter
-    @Id
-    @GeneratedValue
-    private UUID id;
+  @Getter
+  @Id
+  @GeneratedValue
+  private UUID id;
 
-    @Getter
-    @Column(name = "name")
-    private String name;
+  @Getter
+  @Column(name = "name")
+  private String name;
 
-    @Getter
-    @Column(name = "description")
-    private String Description;
+  @Getter
+  @Column(name = "description")
+  private String description;
 
-    @Getter
-    @Column(name = "responsible")
-    private Person responsible;
+  @Getter
+  @Column(name = "responsible")
+  private Person responsible;
 
-    @Getter
-    @Column(name = "start")
-    private Date start;
+  @Getter
+  @Column(name = "start")
+  private Date start;
 
-    @Getter
-    @Column(name = "end")
-    private Date end;
+  @Getter
+  @Column(name = "end")
+  private Date end;
 
-    @Getter
-    @OneToMany(mappedBy = "projecttasks", fetch = FetchType.LAZY)
-    private Collection<ProjectTask> projectTasks;
+  @Getter
+  @OneToMany(mappedBy = "projecttasks", fetch = FetchType.LAZY)
+  private Collection<ProjectTask> projectTasks;
 
 }
