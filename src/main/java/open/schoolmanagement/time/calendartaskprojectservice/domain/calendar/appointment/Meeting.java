@@ -24,14 +24,15 @@ public class Meeting {
     @Getter
     @Id
     @GeneratedValue
-    private UUID id;
+    @Column(name = "meeting_id", nullable = false)
+    private Long meetingId;
 
     @Getter
-    @Column(name = "start")
+    @Column(name = "meeting_start")
     private Date start;
 
     @Getter
-    @Column(name = "end")
+    @Column(name = "meeting_end")
     private Date end;
 
     @Getter
@@ -51,7 +52,7 @@ public class Meeting {
     private Person organiser;
 
     @Getter
-    @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
-    private Collection<Person> invitedPerson;
+    @OneToMany(mappedBy = "meeting_id", fetch = FetchType.LAZY)
+    private Collection<MeetingInvitedPersonRelation> invitedPerson;
 
 }

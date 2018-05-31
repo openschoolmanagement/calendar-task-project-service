@@ -33,7 +33,7 @@ public class TimeTableEntry {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  private Long id;
 
   @Getter
   @Column(name = "course")

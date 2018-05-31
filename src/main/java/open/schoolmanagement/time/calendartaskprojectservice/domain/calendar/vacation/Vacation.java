@@ -34,7 +34,7 @@ public class Vacation {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  private Long id;
 
   @Getter
   @Setter
