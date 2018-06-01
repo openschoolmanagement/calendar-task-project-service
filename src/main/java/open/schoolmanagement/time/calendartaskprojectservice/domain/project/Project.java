@@ -58,8 +58,4 @@ public class Project {
   @Column(name = "project_end")
   private Date end;
 
-  @Getter
-  @OneToMany(mappedBy = "projecttasks", fetch = FetchType.LAZY)
-  private Collection<ProjectTask> projectTasks;
-
 }

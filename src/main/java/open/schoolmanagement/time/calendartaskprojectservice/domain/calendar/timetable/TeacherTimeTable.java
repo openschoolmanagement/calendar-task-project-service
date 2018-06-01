@@ -14,11 +14,12 @@
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
 import java.util.Collection;
-import java.util.UUID;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -34,10 +35,12 @@ public class TeacherTimeTable {
   @Getter
   @Id
   @GeneratedValue
-  private Long id;
+  @Column(name = "teachertimetable_id")
+  private Long teacherTimetableId;
 
   @Getter
   @OneToOne(mappedBy = "teacher")
+  @JoinColumn(name = "teacher_id")
   private Teacher teacher;
 
   @Getter

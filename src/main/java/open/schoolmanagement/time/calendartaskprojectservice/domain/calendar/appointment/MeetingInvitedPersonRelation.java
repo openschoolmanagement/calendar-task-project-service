@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 
 @Table(name = "meeting_invitedperson_relation")
 @Builder
@@ -23,12 +24,12 @@ public class MeetingInvitedPersonRelation {
 
   @Getter
   @OneToOne(mappedBy = "meeting_id", fetch = FetchType.LAZY)
-  private Long meetingId;
+  private Meeting meeting;
 
 
   @Getter
   @OneToOne(mappedBy = "person_id", fetch = FetchType.LAZY)
-  private Long personId;
+  private Person person;
 
 
 }

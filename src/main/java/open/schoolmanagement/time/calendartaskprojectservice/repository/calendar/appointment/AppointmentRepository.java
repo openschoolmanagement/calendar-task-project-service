@@ -39,7 +39,7 @@ public interface AppointmentRepository extends CrudRepository<Appointment, UUID>
    * @return
    */
   @Query("SELECT a FROM Appointment a where a.start LIKE %?1 and where a.owner EQUALS %?2")
-  Collection<Appointment> findByStart(Date start, UUID person);
+  Collection<Appointment> findByStart(Date start, Long person);
 
   /** Find appointment for the owning person
    *
@@ -47,5 +47,5 @@ public interface AppointmentRepository extends CrudRepository<Appointment, UUID>
    * @return
    */
   @Query("SELECT a FROM Appointment a where a.owner EQUALS %?1")
-  Collection<Appointment> findByForWhom(UUID personID);
+  Collection<Appointment> findByForWhom(Long personID);
 }

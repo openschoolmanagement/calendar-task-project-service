@@ -15,10 +15,12 @@ package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.ti
 
 import java.util.Collection;
 import java.util.UUID;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -34,10 +36,12 @@ public class ClassTimeTable {
   @Getter
   @Id
   @GeneratedValue
-  private Long id;
+  @Column(name = "classtimetable_id")
+  private Long classTimeTableId;
 
   @Getter
   @OneToOne(mappedBy = "schoolclass")
+  @JoinColumn(name = "schoolclass_id")
   private SchoolClass schoolClass;
 
   @Getter

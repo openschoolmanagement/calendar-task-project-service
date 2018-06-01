@@ -36,13 +36,13 @@ public class ProjectTask {
   private Long projectTaskId;
 
   @Getter
-  @OneToOne(mappedBy = "project",
+  @OneToOne(mappedBy = "project_id",
       fetch = FetchType.LAZY)
   private Project project;
 
 
   @Getter
-  @OneToOne(mappedBy = "task",
+  @OneToOne(mappedBy = "task_id",
       fetch = FetchType.LAZY)
   private Task task;
 

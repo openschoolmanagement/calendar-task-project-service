@@ -54,7 +54,7 @@ public class Appointment {
   @Column(name = "location")
   private String location;
   @Getter
-  @OneToOne(mappedBy = "owner")
+  @OneToOne(mappedBy = "appointment_owner")
   private Person owner;
 
 }
