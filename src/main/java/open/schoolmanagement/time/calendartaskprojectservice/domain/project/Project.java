@@ -35,7 +35,8 @@ public class Project {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  @Column(name = "project_id")
+  private Long projectId;
 
   @Getter
   @Column(name = "name")
@@ -50,15 +51,11 @@ public class Project {
   private Person responsible;
 
   @Getter
-  @Column(name = "start")
+  @Column(name = "project_start")
   private Date start;
 
   @Getter
-  @Column(name = "end")
+  @Column(name = "project_end")
   private Date end;
-
-  @Getter
-  @OneToMany(mappedBy = "projecttasks", fetch = FetchType.LAZY)
-  private Collection<ProjectTask> projectTasks;
 
 }

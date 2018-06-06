@@ -11,9 +11,8 @@
    limitations under the License.
  */
 
-package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
+package open.schoolmanagement.time.calendartaskprojectservice.domain.classes;
 
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,20 +20,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable.SubjectType;
 
 @Builder
 @Entity
-@Table(name = "subject")
-public class Subject {
+@Table(name = "schoolsubject")
+public class SchoolSubject {
 
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  @Column(name = "schoolsubject_id")
+  private Long schoolSubjectId;
 
   @Getter
-  @Column(name = "name")
-  private String name;
+  @Column(name = "schoolsubject_name")
+  private String schoolSubjectName;
 
   @Getter
   @Column(name = "subjecttype")

@@ -13,7 +13,6 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.classes;
 
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,14 +30,15 @@ public class SchoolClass {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  @Column(name = "schoolclass_id")
+  private Long schoolClassId;
 
   @Getter
-  @Column(name = "name")
+  @Column(name = "schoolclass_name")
   private String name;
 
   @Getter
-  @OneToOne(mappedBy = "teacher")
+  @OneToOne(mappedBy = "schoolclass_teacher")
   private Teacher classTeacher;
 
 }

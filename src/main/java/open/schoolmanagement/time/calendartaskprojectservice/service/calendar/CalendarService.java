@@ -16,6 +16,7 @@ package open.schoolmanagement.time.calendartaskprojectservice.service.calendar;
 import java.util.Collection;
 import java.util.Date;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.appointment.Appointment;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 import open.schoolmanagement.time.calendartaskprojectservice.repository.calendar.appointment.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,6 @@ public class CalendarService {
   /**
    * Create an appointment.
    *
-   *
    * @param start       Start of an Appointment.
    * @param end         End of an Appointment.
    * @param subject     Subject of an Appointment.
@@ -39,11 +39,12 @@ public class CalendarService {
    **/
   public Appointment createAppointment(Date start, Date end, String subject, String description) {
 
+
     long duration = end.getTime() - start.getTime();
 
     Appointment appointment = Appointment.builder()
         .start(start).end(end).duration(duration)
-        .subject(subject).description(description).forWhom(null).build();
+        .appointmentSubject(subject).description(description).owner(null).build();
     //TODO Create Person out of current principal
 
     appointment = appointmentRepository.<Appointment>save(appointment);
@@ -56,10 +57,19 @@ public class CalendarService {
    *
    * @return Collection of Appointments
    */
-  public Collection<Appointment> listAppointmentsForCurrentUser() {
+  public Collection<Appointment> listAppointmentsForUser(Person person) {
 
-    //TODO Create Person out of current principal
+    return appointmentRepository.findByForWhom(person.getPersonId());
+  }
 
-    return appointmentRepository.findByForWhom(null);
+  /**Return all appointments for a certain date and a person
+   *
+   * @param date Day of the Appointement
+   * @param person Owner of the Appointments
+   * @return Collection of Appointments
+   */
+  public Collection<Appointment> listAppointementByDate(Date date, Person person) {
+
+    return appointmentRepository.findByStart(date, person.getPersonId());
   }
 }

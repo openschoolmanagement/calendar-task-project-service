@@ -15,7 +15,6 @@ package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.ti
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,11 +33,12 @@ public class TimeTable {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  @Column(name = "timetable_id")
+  private Long timetableId;
 
   @Getter
-  @Column(name = "name")
-  private String name;
+  @Column(name = "timetable_name")
+  private String timetableName;
 
   @Getter
   @Column(name = "validfrom")
@@ -49,7 +49,7 @@ public class TimeTable {
   private Date validTo;
 
   @Getter
-  @OneToMany(mappedBy = "timetableentry", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "timetable_id", fetch = FetchType.LAZY)
   private Collection<TimeTableEntry> timeTableEntries;
 
 

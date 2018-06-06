@@ -13,18 +13,39 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.repository.calendar.appointment;
 
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.appointment.Appointment;
-import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AppointmentRepository extends CrudRepository<Appointment, UUID> {
 
-  List<Appointment> findBySubject(String subject);
+  /** Find appointment by subject and for the owning person
+   *
+   * @param subject
+   * @param person
+   * @return
+   */
+  @Query("SELECT a FROM Appointment a where a.subject LIKE %?1 and where a.owner EQUALS %?2")
+  Collection<Appointment> findBySubject(String subject, UUID person);
 
-  List<Appointment> findByStart(Date start);
 
-  List<Appointment> findByForWhom(Person forWhom);
+  /**Find appointment by Start Time and for the owning person
+   *
+   * @param start
+   * @param person
+   * @return
+   */
+  @Query("SELECT a FROM Appointment a where a.start LIKE %?1 and where a.owner EQUALS %?2")
+  Collection<Appointment> findByStart(Date start, Long person);
+
+  /** Find appointment for the owning person
+   *
+   * @param personID
+   * @return
+   */
+  @Query("SELECT a FROM Appointment a where a.owner EQUALS %?1")
+  Collection<Appointment> findByForWhom(Long personID);
 }

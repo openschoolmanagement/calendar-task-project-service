@@ -15,17 +15,17 @@ package open.schoolmanagement.time.calendartaskprojectservice.domain.classes;
 
 
 import java.util.Collection;
-import java.util.UUID;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
-import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable.Subject;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 
 @Builder
@@ -36,15 +36,17 @@ public class Teacher {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  @Column(name = "teacher_id")
+  private Long teacherId;
 
   @Getter
   @OneToOne(mappedBy = "person")
+  @JoinColumn(name = "person_id")
   private Person person;
 
   @Getter
-  @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
-  private Collection<Subject> subjects;
+  @OneToMany(mappedBy = "teacher_id", fetch = FetchType.LAZY)
+  private Collection<SchoolSubjectRelation> subjectRelations;
 
 
 }

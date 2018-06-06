@@ -13,16 +13,17 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.SchoolClass;
+import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.SchoolSubject;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.Teacher;
 
 @Builder
@@ -33,22 +34,25 @@ public class TimeTableEntry {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  @Column(name = "timetableentry_id")
+  private Long timeTableEntryId;
 
   @Getter
   @Column(name = "course")
   private String course;
 
   @Getter
-  @OneToOne(mappedBy = "schoolclass")
+  @OneToOne(mappedBy = "schoolClass")
+  @JoinColumn(name = "schoolclass_id")
   private SchoolClass schoolClass;
 
   @Getter
-  @OneToOne(mappedBy = "subject")
-  private Subject subject;
+  @OneToOne(mappedBy = "timetableentry_subject")
+  private SchoolSubject timetableentrySubject;
 
   @Getter
   @OneToOne(mappedBy = "teacher")
+  @JoinColumn(name = "teacher_id")
   private Teacher teacher;
 
   @Getter

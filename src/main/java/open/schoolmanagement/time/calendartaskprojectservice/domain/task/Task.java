@@ -14,7 +14,6 @@
 package open.schoolmanagement.time.calendartaskprojectservice.domain.task;
 
 import java.util.Date;
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,7 +33,8 @@ public class Task {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  @Column(name = "task_id", nullable = false)
+  private Long taskId;
 
   @Getter
   @Column(name = "name")
@@ -50,7 +50,7 @@ public class Task {
 
   @Getter
   @Column(name = "started")
-  private Date started;
+  private Boolean started;
 
   @Getter
   @Column(name = "reminder")

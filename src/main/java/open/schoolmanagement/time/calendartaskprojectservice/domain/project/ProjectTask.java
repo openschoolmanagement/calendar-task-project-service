@@ -13,14 +13,11 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.project;
 
-import java.util.List;
-import java.util.UUID;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Builder;
@@ -35,30 +32,18 @@ public class ProjectTask {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  @Column(name = "projecttask_id")
+  private Long projectTaskId;
 
   @Getter
-  @OneToOne(mappedBy = "project",
+  @OneToOne(mappedBy = "project_id",
       fetch = FetchType.LAZY)
   private Project project;
 
 
   @Getter
-  @OneToOne(mappedBy = "task",
+  @OneToOne(mappedBy = "task_id",
       fetch = FetchType.LAZY)
   private Task task;
-
-
-  @Getter
-  @OneToOne(mappedBy = "predecessor",
-      fetch = FetchType.LAZY)
-  private ProjectTask predecessor;
-
-  @Getter
-  @OneToMany(mappedBy = "state",
-      fetch = FetchType.LAZY,
-      cascade = CascadeType.ALL,
-      orphanRemoval = true)
-  private List<ProjectTask> successor;
 
 }

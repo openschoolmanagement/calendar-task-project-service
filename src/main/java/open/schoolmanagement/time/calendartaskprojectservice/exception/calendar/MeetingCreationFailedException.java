@@ -10,12 +10,16 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
-package open.schoolmanagement.time.calendartaskprojectservice.repository.calendar.timetable;
 
-import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.SchoolSubject;
-import org.springframework.data.repository.CrudRepository;
+package open.schoolmanagement.time.calendartaskprojectservice.exception.calendar;
 
-import java.util.UUID;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-public interface SubjectRepository extends CrudRepository<SchoolSubject, UUID> {
+@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+public class MeetingCreationFailedException extends RuntimeException {
+
+  public MeetingCreationFailedException(String exception) {
+    super(exception);
+  }
 }

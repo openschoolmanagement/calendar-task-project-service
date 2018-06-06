@@ -14,11 +14,11 @@
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.appointment;
 
 import java.util.Date;
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,24 +33,28 @@ public class Appointment {
   @Getter
   @Id
   @GeneratedValue
-  private UUID id;
+  @Column(name = "appointment_id")
+  private Long appointmentId;
   @Getter
-  @Column(name = "start")
+  @Column(name = "appointment_start")
   private Date start;
   @Getter
-  @Column(name = "end")
+  @Column(name = "appointment_end")
   private Date end;
   @Getter
-  @Column(name = "duration")
-  private long duration;
+  @Column(name = "appointment_duration")
+  private Long duration;
   @Getter
-  @Column(name = "subject")
-  private String subject;
+  @Column(name = "appointment_subject")
+  private String appointmentSubject;
   @Getter
   @Column(name = "description")
   private String description;
   @Getter
-  @Column(name = "for_whom")
-  private Person forWhom;
+  @Column(name = "location")
+  private String location;
+  @Getter
+  @OneToOne(mappedBy = "appointment_owner")
+  private Person owner;
 
 }
