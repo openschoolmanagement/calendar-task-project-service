@@ -45,14 +45,14 @@ public class CalendarController {
   @GetMapping(path = "/appointment/")
   Collection<Appointment> listAppointments() {
 
-    Person person = Person.builder()
-        .personId(123L)
-        .emailAddress("abcd@abc.de")
-        .firstName("Heinz")
-        .lastName("Becker")
-        .build();
+//    Person person = Person.builder()
+//        .personId(123L)
+//        .emailAddress("abcd@abc.de")
+//        .firstName("Heinz")
+//        .lastName("Becker")
+//        .build();
 
-    return calendarService.listAppointmentsForUser(person);
+    return calendarService.listAppointmentsForUser(null);
   }
 
 
