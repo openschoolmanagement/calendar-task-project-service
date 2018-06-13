@@ -14,6 +14,7 @@
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
 import java.util.Collection;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,29 +24,181 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import lombok.Builder;
-import lombok.Getter;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.Teacher;
 
+/**
+ * The type Teacher time table.
+ */
 @Table(name = "teachertimetable")
 @Entity
-@Builder
 public class TeacherTimeTable {
 
-  @Getter
   @Id
   @GeneratedValue
   @Column(name = "teachertimetable_id")
   private Long teacherTimetableId;
 
-  @Getter
   @OneToOne(mappedBy = "teacher")
   @JoinColumn(name = "teacher_id")
   private Teacher teacher;
 
-  @Getter
   @OneToMany(mappedBy = "timetableentry", fetch = FetchType.LAZY)
   private Collection<TimeTableEntry> timeTableEntries;
 
 
+  private TeacherTimeTable(TeacherTimeTableBuilder builder) {
+    this.teacher = builder.teacher;
+    this.timeTableEntries = builder.timeTableEntries;
+  }
+
+  /**
+   * Gets teacher timetable id.
+   *
+   * @return the teacher timetable id
+   */
+  public Long getTeacherTimetableId() {
+    return teacherTimetableId;
+  }
+
+  /**
+   * Sets teacher timetable id.
+   *
+   * @param teacherTimetableId the teacher timetable id
+   */
+  public void setTeacherTimetableId(Long teacherTimetableId) {
+    this.teacherTimetableId = teacherTimetableId;
+  }
+
+  /**
+   * Gets teacher.
+   *
+   * @return the teacher
+   */
+  public Teacher getTeacher() {
+    return teacher;
+  }
+
+  /**
+   * Sets teacher.
+   *
+   * @param teacher the teacher
+   */
+  public void setTeacher(Teacher teacher) {
+    this.teacher = teacher;
+  }
+
+  /**
+   * Gets time table entries.
+   *
+   * @return the time table entries
+   */
+  public Collection<TimeTableEntry> getTimeTableEntries() {
+    return timeTableEntries;
+  }
+
+  /**
+   * Sets time table entries.
+   *
+   * @param timeTableEntries the time table entries
+   */
+  public void setTimeTableEntries(Collection<TimeTableEntry> timeTableEntries) {
+    this.timeTableEntries = timeTableEntries;
+  }
+
+  /**
+   * Add time table entries.
+   *
+   * @param timeTableEntry the time table entry
+   */
+  public void addTimeTableEntries(TimeTableEntry timeTableEntry) {
+    this.timeTableEntries.add(timeTableEntry);
+  }
+
+  /**
+   * Remove time table entry.
+   *
+   * @param timeTableEntryId the time table entry id
+   */
+  public void removeTimeTableEntry(Long timeTableEntryId) {
+    this.timeTableEntries.stream().filter(timeTableEntry -> Objects.equals(timeTableEntry
+        .getTimeTableEntryId(), timeTableEntryId))
+        .findFirst()
+        .ifPresent(this::removeTimeTableEntry);
+  }
+
+  /**
+   * Remove time table entry.
+   *
+   * @param timeTableEntry the time table entry
+   */
+  public void removeTimeTableEntry(TimeTableEntry timeTableEntry) {
+    this.timeTableEntries.remove(timeTableEntry);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof TeacherTimeTable)) return false;
+    TeacherTimeTable that = (TeacherTimeTable) o;
+    return Objects.equals(getTeacherTimetableId(), that.getTeacherTimetableId()) &&
+        Objects.equals(getTeacher(), that.getTeacher());
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(getTeacherTimetableId(), getTeacher());
+  }
+
+
+  /**
+   * The type Teacher time table builder.
+   */
+  public static final class TeacherTimeTableBuilder {
+    private Long teacherTimetableId;
+    private Teacher teacher;
+    private Collection<TimeTableEntry> timeTableEntries;
+
+    /**
+     * Sets teacher timetable id.
+     *
+     * @param teacherTimetableId the teacher timetable id
+     * @return the teacher timetable id
+     */
+    public TeacherTimeTableBuilder setTeacherTimetableId(Long teacherTimetableId) {
+      this.teacherTimetableId = teacherTimetableId;
+      return this;
+    }
+
+    /**
+     * Sets teacher.
+     *
+     * @param teacher the teacher
+     * @return the teacher
+     */
+    public TeacherTimeTableBuilder setTeacher(Teacher teacher) {
+      this.teacher = teacher;
+      return this;
+    }
+
+    /**
+     * Sets time table entries.
+     *
+     * @param timeTableEntries the time table entries
+     * @return the time table entries
+     */
+    public TeacherTimeTableBuilder setTimeTableEntries(Collection<TimeTableEntry> timeTableEntries) {
+      this.timeTableEntries = timeTableEntries;
+      return this;
+    }
+
+    /**
+     * Build teacher time table.
+     *
+     * @return the teacher time table
+     */
+    public TeacherTimeTable build() {
+      return new TeacherTimeTable(this);
+    }
+  }
 }

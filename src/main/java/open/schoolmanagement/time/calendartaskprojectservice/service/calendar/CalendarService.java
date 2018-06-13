@@ -43,11 +43,15 @@ public class CalendarService {
     long duration = end.getTime() - start.getTime();
 
     Appointment appointment = Appointment.builder()
-        .start(start).end(end).duration(duration)
-        .appointmentSubject(subject).description(description).owner(null).build();
+        .setStart(start).setEnd(end)
+        .setDuration(duration)
+        .setAppointmentSubject(subject)
+        .setDescription(description)
+        .setOwner(null)
+        .build();
     //TODO Create Person out of current principal
 
-    appointment = appointmentRepository.<Appointment>save(appointment);
+    appointment = appointmentRepository.save(appointment);
 
     return appointment;
   }
@@ -59,17 +63,27 @@ public class CalendarService {
    */
   public Collection<Appointment> listAppointmentsForUser(Person person) {
 
-    return appointmentRepository.findByForWhom(person.getPersonId());
+    if (person != null) {
+      return appointmentRepository.findByForWhom(person.getPersonId());
+    } else {
+      return null;
+    }
   }
 
-  /**Return all appointments for a certain date and a person
+  /**
+   * Return all appointments for a certain date and a person.
    *
-   * @param date Day of the Appointement
+   * @param date   Day of the Appointement
    * @param person Owner of the Appointments
    * @return Collection of Appointments
    */
   public Collection<Appointment> listAppointementByDate(Date date, Person person) {
 
-    return appointmentRepository.findByStart(date, person.getPersonId());
+    if (date != null && person != null) {
+      return appointmentRepository.findByStart(date, person.getPersonId());
+    } else {
+      return null;
+    }
+
   }
 }

@@ -18,5 +18,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
 
-public interface ToDoRepository extends CrudRepository<ToDo, UUID> {
+public interface ToDoRepository extends CrudRepository<ToDo, Long> {
 }

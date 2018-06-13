@@ -13,38 +13,206 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.person;
 
-import java.util.UUID;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import lombok.Builder;
-import lombok.Getter;
 
-@Builder
+
+/**
+ * The type Person.
+ */
 @Entity
 @Table(name = "person")
 public class Person {
 
 
-  @Getter
   @Id
   @GeneratedValue
   @Column(name = "person_id", nullable = false)
   private Long personId;
 
-  @Getter
+
   @Column(name = "emailaddress")
   private String emailAddress;
 
-  @Getter
+
   @Column(name = "firstname")
   private String firstName;
 
-  @Getter
+
   @Column(name = "lastname")
   private String lastName;
 
+  /**
+   * Instantiates a new Person.
+   *
+   * @param builder the builder
+   */
+  public Person(PersonBuilder builder) {
 
+    this.emailAddress = builder.emailAddress;
+    this.firstName = builder.firstName;
+    this.lastName = builder.lastName;
+  }
+
+  /**
+   * Gets person id.
+   *
+   * @return the person id
+   */
+  public Long getPersonId() {
+    return personId;
+  }
+
+  /**
+   * Sets person id.
+   *
+   * @param personId the person id
+   */
+  public void setPersonId(Long personId) {
+    this.personId = personId;
+  }
+
+  /**
+   * Gets email address.
+   *
+   * @return the email address
+   */
+  public String getEmailAddress() {
+    return emailAddress;
+  }
+
+  /**
+   * Sets email address.
+   *
+   * @param emailAddress the email address
+   */
+  public void setEmailAddress(String emailAddress) {
+    this.emailAddress = emailAddress;
+  }
+
+  /**
+   * Gets first name.
+   *
+   * @return the first name
+   */
+  public String getFirstName() {
+    return firstName;
+  }
+
+  /**
+   * Sets first name.
+   *
+   * @param firstName the first name
+   */
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  /**
+   * Gets last name.
+   *
+   * @return the last name
+   */
+  public String getLastName() {
+    return lastName;
+  }
+
+  /**
+   * Sets last name.
+   *
+   * @param lastName the last name
+   */
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Person)) return false;
+    Person person = (Person) o;
+    return Objects.equals(getPersonId(), person.getPersonId()) &&
+        Objects.equals(getEmailAddress(), person.getEmailAddress()) &&
+        Objects.equals(getFirstName(), person.getFirstName()) &&
+        Objects.equals(getLastName(), person.getLastName());
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(getPersonId(), getEmailAddress(), getFirstName(), getLastName());
+  }
+
+
+  /**
+   * The type Person builder.
+   */
+  public static final class PersonBuilder {
+
+    private String emailAddress;
+    private String firstName;
+    private String lastName;
+
+
+    private PersonBuilder() {
+    }
+
+    ;
+
+    /**
+     * Builder person builder.
+     *
+     * @return the person builder
+     */
+    public static PersonBuilder builder() {
+      return new PersonBuilder();
+    }
+
+
+    /**
+     * Sets email address.
+     *
+     * @param emailAddress the email address
+     * @return the email address
+     */
+    public PersonBuilder setEmailAddress(String emailAddress) {
+      this.emailAddress = emailAddress;
+      return this;
+    }
+
+    /**
+     * Sets first name.
+     *
+     * @param firstName the first name
+     * @return the first name
+     */
+    public PersonBuilder setFirstName(String firstName) {
+      this.firstName = firstName;
+      return this;
+    }
+
+    /**
+     * Sets last name.
+     *
+     * @param lastName the last name
+     * @return the last name
+     */
+    public PersonBuilder setLastName(String lastName) {
+      this.lastName = lastName;
+      return this;
+    }
+
+    /**
+     * Build person.
+     *
+     * @return the person
+     */
+    public Person build() {
+      return new Person(this);
+    }
+  }
 }

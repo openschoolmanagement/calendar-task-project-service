@@ -15,7 +15,5 @@ package open.schoolmanagement.time.calendartaskprojectservice.repository.calenda
 import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.SchoolSubject;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.UUID;
-
-public interface SubjectRepository extends CrudRepository<SchoolSubject, UUID> {
+public interface SubjectRepository extends CrudRepository<SchoolSubject, Long> {
 }
