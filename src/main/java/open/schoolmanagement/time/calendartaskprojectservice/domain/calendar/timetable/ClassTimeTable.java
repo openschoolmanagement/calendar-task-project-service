@@ -137,17 +137,22 @@ public class ClassTimeTable {
    */
   public void removeTimeTableEntry(Long timeTableEntryId) {
     this.timeTableEntries.stream().filter(timeTableEntry -> Objects.equals(timeTableEntry
-        .getTimeTableEntryId(), timeTableEntryId)).findFirst().ifPresent(this::removeTimeTableEntry);
+        .getTimeTableEntryId(), timeTableEntryId)).findFirst()
+        .ifPresent(this::removeTimeTableEntry);
   }
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof ClassTimeTable)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ClassTimeTable)) {
+      return false;
+    }
     ClassTimeTable that = (ClassTimeTable) o;
-    return Objects.equals(getClassTimeTableId(), that.getClassTimeTableId()) &&
-        Objects.equals(getSchoolClass(), that.getSchoolClass()) &&
-        Objects.equals(getTimeTableEntries(), that.getTimeTableEntries());
+    return Objects.equals(getClassTimeTableId(), that.getClassTimeTableId())
+        && Objects.equals(getSchoolClass(), that.getSchoolClass())
+        && Objects.equals(getTimeTableEntries(), that.getTimeTableEntries());
   }
 
   @Override

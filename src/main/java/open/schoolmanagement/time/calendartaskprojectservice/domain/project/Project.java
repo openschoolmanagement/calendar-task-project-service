@@ -170,12 +170,16 @@ public class Project {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Project)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Project)) {
+      return false;
+    }
     Project project = (Project) o;
-    return Objects.equals(getProjectId(), project.getProjectId()) &&
-        Objects.equals(getStart(), project.getStart()) &&
-        Objects.equals(getEnd(), project.getEnd());
+    return Objects.equals(getProjectId(), project.getProjectId())
+        && Objects.equals(getStart(), project.getStart())
+        && Objects.equals(getEnd(), project.getEnd());
   }
 
   @Override

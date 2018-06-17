@@ -101,12 +101,16 @@ public class ProjectTaskSelfRelation {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof ProjectTaskSelfRelation)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ProjectTaskSelfRelation)) {
+      return false;
+    }
     ProjectTaskSelfRelation that = (ProjectTaskSelfRelation) o;
-    return Objects.equals(getProjectTaskSelfRelationId(), that.getProjectTaskSelfRelationId()) &&
-        Objects.equals(getProjectTask(), that.getProjectTask()) &&
-        Objects.equals(getPredecessor(), that.getPredecessor());
+    return Objects.equals(getProjectTaskSelfRelationId(), that.getProjectTaskSelfRelationId())
+        && Objects.equals(getProjectTask(), that.getProjectTask())
+        && Objects.equals(getPredecessor(), that.getPredecessor());
   }
 
   @Override

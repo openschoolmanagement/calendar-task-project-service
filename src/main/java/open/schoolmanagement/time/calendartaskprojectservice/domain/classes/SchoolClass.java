@@ -105,11 +105,15 @@ public class SchoolClass {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof SchoolClass)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof SchoolClass)) {
+      return false;
+    }
     SchoolClass that = (SchoolClass) o;
-    return Objects.equals(getSchoolClassId(), that.getSchoolClassId()) &&
-        Objects.equals(getName(), that.getName());
+    return Objects.equals(getSchoolClassId(), that.getSchoolClassId())
+        && Objects.equals(getName(), that.getName());
   }
 
   @Override

@@ -19,6 +19,9 @@ import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.app
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+/**
+ * The interface Appointment repository.
+ */
 public interface AppointmentRepository extends CrudRepository<Appointment, Long> {
 
   /**
@@ -26,7 +29,7 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Long>
    *
    * @param subject subject of the appointment.
    * @param person  Owner of the appointment.
-   * @return Appointments
+   * @return Appointments collection
    */
   @Query("SELECT a FROM Appointment a where a.subject LIKE %?1 and where a.owner EQUALS %?2")
   Collection<Appointment> findBySubject(String subject, Long person);
@@ -36,18 +39,19 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Long>
    * Find appointment by Start Time and for the owning person.
    *
    * @param start    start Date of the appointment
-   * @param personID owner id of the appointment
-   * @return Appointments
+   * @param personId owner id of the appointment
+   * @return Appointments collection
    */
   @Query("SELECT a FROM Appointment a where a.start LIKE %?1 and where a.owner EQUALS %?2")
-  Collection<Appointment> findByStart(Date start, Long personID);
+  Collection<Appointment> findByStart(Date start, Long personId);
+
 
   /**
-   * Find appointment for the owning person.
+   * Find by for whom collection.
    *
-   * @param personID
-   * @return
+   * @param personId the person id
+   * @return the collection
    */
   @Query("SELECT a FROM Appointment a where a.owner EQUALS %?1")
-  Collection<Appointment> findByForWhom(Long personID);
+  Collection<Appointment> findByForWhom(Long personId);
 }

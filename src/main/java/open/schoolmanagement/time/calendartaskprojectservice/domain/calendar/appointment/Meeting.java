@@ -180,6 +180,7 @@ public class Meeting {
     return organiser;
   }
 
+
   /**
    * Sets organiser.
    *
@@ -187,6 +188,25 @@ public class Meeting {
    */
   public void setOrganiser(Person organiser) {
     this.organiser = organiser;
+  }
+
+
+  /**
+   * Gets start.
+   *
+   * @return the start
+   */
+  public Date getStart() {
+    return start;
+  }
+
+  /**
+   * Sets start.
+   *
+   * @param start the start
+   */
+  public void setStart(Date start) {
+    this.start = start;
   }
 
   /**
@@ -231,31 +251,44 @@ public class Meeting {
    * @param invitedPersonRelationId the invited person relation id
    */
   public void removeInvitedPerson(Long invitedPersonRelationId) {
-    this.invitedPersons.stream().filter(invitedPersonRelation -> Objects.equals
-        (invitedPersonRelation.getMeetingInvitedPersonRelationId(), invitedPersonRelationId))
+    this.invitedPersons.stream().filter(invitedPersonRelation -> Objects.equals(
+        invitedPersonRelation.getMeetingInvitedPersonRelationId(), invitedPersonRelationId))
         .findFirst().ifPresent(this::removeInvitedPerson);
   }
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Meeting)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Meeting)) {
+      return false;
+    }
     Meeting meeting = (Meeting) o;
-    return getDuration() == meeting.getDuration() &&
-        Objects.equals(getMeetingId(), meeting.getMeetingId()) &&
-        Objects.equals(start, meeting.start) &&
-        Objects.equals(getEnd(), meeting.getEnd()) &&
-        Objects.equals(getSubject(), meeting.getSubject()) &&
-        Objects.equals(getLocation(), meeting.getLocation()) &&
-        Objects.equals(getDescription(), meeting.getDescription()) &&
-        Objects.equals(getOrganiser(), meeting.getOrganiser()) &&
-        Objects.equals(getInvitedPersons(), meeting.getInvitedPersons());
+    return getDuration() == meeting.getDuration()
+        && Objects.equals(getMeetingId(), meeting.getMeetingId())
+        && Objects.equals(start, meeting.start)
+        && Objects.equals(getEnd(), meeting.getEnd())
+        && Objects.equals(getSubject(), meeting.getSubject())
+        && Objects.equals(getLocation(), meeting.getLocation())
+        && Objects.equals(getDescription(), meeting.getDescription())
+        && Objects.equals(getOrganiser(), meeting.getOrganiser())
+        && Objects.equals(getInvitedPersons(), meeting.getInvitedPersons());
   }
+
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(getMeetingId(), start, getEnd(), getDuration(), getSubject(), getLocation(), getDescription(), getOrganiser(), getInvitedPersons());
+    return Objects.hash(getMeetingId(),
+        getStart(),
+        getEnd(),
+        getDuration(),
+        getSubject(),
+        getLocation(),
+        getDescription(),
+        getOrganiser(),
+        getInvitedPersons());
   }
 
   /**
@@ -363,7 +396,8 @@ public class Meeting {
      * @param invitedPersons the invited persons
      * @return the invited persons
      */
-    public MeetingBuilder setInvitedPersons(Collection<MeetingInvitedPersonRelation> invitedPersons) {
+    public MeetingBuilder setInvitedPersons(
+        Collection<MeetingInvitedPersonRelation> invitedPersons) {
       this.invitedPersons = invitedPersons;
       return this;
     }

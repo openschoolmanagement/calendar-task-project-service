@@ -115,12 +115,16 @@ public class ProjectTask {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof ProjectTask)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ProjectTask)) {
+      return false;
+    }
     ProjectTask that = (ProjectTask) o;
-    return Objects.equals(getProjectTaskId(), that.getProjectTaskId()) &&
-        Objects.equals(getProject(), that.getProject()) &&
-        Objects.equals(getTask(), that.getTask());
+    return Objects.equals(getProjectTaskId(), that.getProjectTaskId())
+        && Objects.equals(getProject(), that.getProject())
+        && Objects.equals(getTask(), that.getTask());
   }
 
   @Override

@@ -133,13 +133,17 @@ public class PublicHoliday implements Constants {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof PublicHoliday)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof PublicHoliday)) {
+      return false;
+    }
     PublicHoliday that = (PublicHoliday) o;
-    return Objects.equals(getId(), that.getId()) &&
-        Objects.equals(getDay(), that.getDay()) &&
-        Objects.equals(getName(), that.getName()) &&
-        Objects.equals(getAffectedCountryInStateCode(), that.getAffectedCountryInStateCode());
+    return Objects.equals(getId(), that.getId())
+        && Objects.equals(getDay(), that.getDay())
+        && Objects.equals(getName(), that.getName())
+        && Objects.equals(getAffectedCountryInStateCode(), that.getAffectedCountryInStateCode());
   }
 
   @Override

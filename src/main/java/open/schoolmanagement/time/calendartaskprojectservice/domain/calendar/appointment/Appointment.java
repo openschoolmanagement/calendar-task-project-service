@@ -72,6 +72,15 @@ public class Appointment {
   }
 
   /**
+   * Builder appointment builder.
+   *
+   * @return the appointment builder
+   */
+  public static AppointmentBuilder builder() {
+    return new AppointmentBuilder();
+  }
+
+  /**
    * Gets appointment id.
    *
    * @return the appointment id
@@ -217,29 +226,28 @@ public class Appointment {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Appointment)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Appointment)) {
+      return false;
+    }
     Appointment that = (Appointment) o;
-    return Objects.equals(getAppointmentId(), that.getAppointmentId()) &&
-        Objects.equals(getStart(), that.getStart()) &&
-        Objects.equals(getEnd(), that.getEnd()) &&
-        Objects.equals(getAppointmentSubject(), that.getAppointmentSubject()) &&
-        Objects.equals(getOwner(), that.getOwner());
+    return Objects.equals(getAppointmentId(), that.getAppointmentId())
+        && Objects.equals(getStart(), that.getStart())
+        && Objects.equals(getEnd(), that.getEnd())
+        && Objects.equals(getAppointmentSubject(), that.getAppointmentSubject())
+        && Objects.equals(getOwner(), that.getOwner());
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(getAppointmentId(), getStart(), getEnd(), getAppointmentSubject(), getOwner());
-  }
-
-  /**
-   * Builder appointment builder.
-   *
-   * @return the appointment builder
-   */
-  public static AppointmentBuilder builder() {
-    return new AppointmentBuilder();
+    return Objects.hash(getAppointmentId(),
+                        getStart(),
+                        getEnd(),
+                        getAppointmentSubject(),
+                        getOwner());
   }
 
   /**
@@ -255,10 +263,9 @@ public class Appointment {
     private Person owner;
 
 
-    private AppointmentBuilder(){
+    private AppointmentBuilder() {
 
     }
-
 
 
     /**

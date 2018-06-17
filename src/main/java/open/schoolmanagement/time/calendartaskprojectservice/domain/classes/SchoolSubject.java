@@ -103,12 +103,16 @@ public class SchoolSubject {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof SchoolSubject)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof SchoolSubject)) {
+      return false;
+    }
     SchoolSubject that = (SchoolSubject) o;
-    return Objects.equals(getSchoolSubjectId(), that.getSchoolSubjectId()) &&
-        Objects.equals(getSchoolSubjectName(), that.getSchoolSubjectName()) &&
-        getSubjectType() == that.getSubjectType();
+    return Objects.equals(getSchoolSubjectId(), that.getSchoolSubjectId())
+        && Objects.equals(getSchoolSubjectName(), that.getSchoolSubjectName())
+        && getSubjectType() == that.getSubjectType();
   }
 
   @Override

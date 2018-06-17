@@ -217,21 +217,31 @@ public class TimeTableEntry {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof TimeTableEntry)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof TimeTableEntry)) {
+      return false;
+    }
     TimeTableEntry that = (TimeTableEntry) o;
-    return Objects.equals(getTimeTableEntryId(), that.getTimeTableEntryId()) &&
-        Objects.equals(getCourse(), that.getCourse()) &&
-        Objects.equals(getSchoolClass(), that.getSchoolClass()) &&
-        Objects.equals(getTimetableentrySubject(), that.getTimetableentrySubject()) &&
-        getWeekDay() == that.getWeekDay() &&
-        getSchoolHour() == that.getSchoolHour();
+    return Objects.equals(getTimeTableEntryId(), that.getTimeTableEntryId())
+        && Objects.equals(getCourse(), that.getCourse())
+        && Objects.equals(getSchoolClass(), that.getSchoolClass())
+        && Objects.equals(getTimetableentrySubject(), that.getTimetableentrySubject())
+        && getWeekDay() == that.getWeekDay()
+        && getSchoolHour() == that.getSchoolHour();
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(getTimeTableEntryId(), getCourse(), getSchoolClass(), getTimetableentrySubject(), getWeekDay(), getSchoolHour());
+    return Objects.hash(
+        getTimeTableEntryId(),
+        getCourse(),
+        getSchoolClass(),
+        getTimetableentrySubject(),
+        getWeekDay(),
+        getSchoolHour());
   }
 
 

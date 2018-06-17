@@ -13,7 +13,6 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.classes;
 
-
 import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -144,11 +143,15 @@ public class Teacher {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Teacher)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Teacher)) {
+      return false;
+    }
     Teacher teacher = (Teacher) o;
-    return Objects.equals(getTeacherId(), teacher.getTeacherId()) &&
-        Objects.equals(getPerson(), teacher.getPerson());
+    return Objects.equals(getTeacherId(), teacher.getTeacherId())
+        && Objects.equals(getPerson(), teacher.getPerson());
   }
 
   @Override

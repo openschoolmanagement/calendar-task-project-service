@@ -165,15 +165,19 @@ public class Vacation {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Vacation)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Vacation)) {
+      return false;
+    }
     Vacation vacation = (Vacation) o;
-    return getYear() == vacation.getYear() &&
-        Objects.equals(getId(), vacation.getId()) &&
-        Objects.equals(getStart(), vacation.getStart()) &&
-        Objects.equals(getEnd(), vacation.getEnd()) &&
-        Objects.equals(getState(), vacation.getState()) &&
-        Objects.equals(getSlug(), vacation.getSlug());
+    return getYear() == vacation.getYear()
+        && Objects.equals(getId(), vacation.getId())
+        && Objects.equals(getStart(), vacation.getStart())
+        && Objects.equals(getEnd(), vacation.getEnd())
+        && Objects.equals(getState(), vacation.getState())
+        && Objects.equals(getSlug(), vacation.getSlug());
   }
 
   @Override

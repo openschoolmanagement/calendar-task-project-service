@@ -94,12 +94,16 @@ public class TeacherSubjectRelation {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof TeacherSubjectRelation)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof TeacherSubjectRelation)) {
+      return false;
+    }
     TeacherSubjectRelation that = (TeacherSubjectRelation) o;
-    return Objects.equals(getTeacherSubjectRelationId(), that.getTeacherSubjectRelationId()) &&
-        Objects.equals(getTeacher(), that.getTeacher()) &&
-        Objects.equals(getSchoolSubject(), that.getSchoolSubject());
+    return Objects.equals(getTeacherSubjectRelationId(), that.getTeacherSubjectRelationId())
+        && Objects.equals(getTeacher(), that.getTeacher())
+        && Objects.equals(getSchoolSubject(), that.getSchoolSubject());
   }
 
   @Override

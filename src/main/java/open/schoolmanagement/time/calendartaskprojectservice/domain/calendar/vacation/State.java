@@ -14,7 +14,6 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.vacation;
 
-
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -156,12 +155,16 @@ public class State {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof State)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof State)) {
+      return false;
+    }
     State state = (State) o;
-    return Objects.equals(getId(), state.getId()) &&
-        Objects.equals(getName(), state.getName()) &&
-        Objects.equals(getIsoCode(), state.getIsoCode());
+    return Objects.equals(getId(), state.getId())
+        && Objects.equals(getName(), state.getName())
+        && Objects.equals(getIsoCode(), state.getIsoCode());
   }
 
   @Override
@@ -180,6 +183,14 @@ public class State {
     private String isoCode;
     private String isoCodeShort;
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name) {
+      this.name = name;
+    }
 
     /**
      * Sets iso code.

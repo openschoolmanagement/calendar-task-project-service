@@ -215,23 +215,35 @@ public class Task {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Task)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Task)) {
+      return false;
+    }
     Task task = (Task) o;
-    return Objects.equals(getTaskId(), task.getTaskId()) &&
-        Objects.equals(getName(), task.getName()) &&
-        Objects.equals(getDescription(), task.getDescription()) &&
-        Objects.equals(getDeadline(), task.getDeadline()) &&
-        Objects.equals(getStarted(), task.getStarted()) &&
-        Objects.equals(getReminder(), task.getReminder()) &&
-        Objects.equals(getTaskGiver(), task.getTaskGiver()) &&
-        Objects.equals(getTaskExecutor(), task.getTaskExecutor());
+    return Objects.equals(getTaskId(), task.getTaskId())
+        && Objects.equals(getName(), task.getName())
+        && Objects.equals(getDescription(), task.getDescription())
+        && Objects.equals(getDeadline(), task.getDeadline())
+        && Objects.equals(getStarted(), task.getStarted())
+        && Objects.equals(getReminder(), task.getReminder())
+        && Objects.equals(getTaskGiver(), task.getTaskGiver())
+        && Objects.equals(getTaskExecutor(), task.getTaskExecutor());
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(getTaskId(), getName(), getDescription(), getDeadline(), getStarted(), getReminder(), getTaskGiver(), getTaskExecutor());
+    return Objects.hash(
+        getTaskId(),
+        getName(),
+        getDescription(),
+        getDeadline(),
+        getStarted(),
+        getReminder(),
+        getTaskGiver(),
+        getTaskExecutor());
   }
 
 
@@ -248,7 +260,7 @@ public class Task {
     private Person taskExecutor;
 
 
-    private TaskBuilder(){
+    private TaskBuilder() {
 
     }
 

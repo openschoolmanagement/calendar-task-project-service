@@ -200,22 +200,33 @@ public class LendObject {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof LendObject)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof LendObject)) {
+      return false;
+    }
     LendObject that = (LendObject) o;
-    return isReturned() == that.isReturned() &&
-        Objects.equals(getId(), that.getId()) &&
-        Objects.equals(getName(), that.getName()) &&
-        Objects.equals(getOwner(), that.getOwner()) &&
-        Objects.equals(getLendByWhom(), that.getLendByWhom()) &&
-        Objects.equals(getWhenLend(), that.getWhenLend()) &&
-        Objects.equals(getDueToReturn(), that.getDueToReturn());
+    return isReturned() == that.isReturned()
+        && Objects.equals(getId(), that.getId())
+        && Objects.equals(getName(), that.getName())
+        && Objects.equals(getOwner(), that.getOwner())
+        && Objects.equals(getLendByWhom(), that.getLendByWhom())
+        && Objects.equals(getWhenLend(), that.getWhenLend())
+        && Objects.equals(getDueToReturn(), that.getDueToReturn());
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(getId(), getName(), getOwner(), getLendByWhom(), getWhenLend(), getDueToReturn(), isReturned());
+    return Objects.hash(
+        getId(),
+        getName(),
+        getOwner(),
+        getLendByWhom(),
+        getWhenLend(),
+        getDueToReturn(),
+        isReturned());
   }
 
 

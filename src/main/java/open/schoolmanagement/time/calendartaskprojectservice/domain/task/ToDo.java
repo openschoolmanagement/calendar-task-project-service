@@ -178,21 +178,31 @@ public class ToDo {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof ToDo)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ToDo)) {
+      return false;
+    }
     ToDo toDo = (ToDo) o;
-    return Objects.equals(getToDoId(), toDo.getToDoId()) &&
-        Objects.equals(getName(), toDo.getName()) &&
-        Objects.equals(getDueDate(), toDo.getDueDate()) &&
-        Objects.equals(getDescription(), toDo.getDescription()) &&
-        Objects.equals(getReminder(), toDo.getReminder()) &&
-        Objects.equals(getOwner(), toDo.getOwner());
+    return Objects.equals(getToDoId(), toDo.getToDoId())
+        && Objects.equals(getName(), toDo.getName())
+        && Objects.equals(getDueDate(), toDo.getDueDate())
+        && Objects.equals(getDescription(), toDo.getDescription())
+        && Objects.equals(getReminder(), toDo.getReminder())
+        && Objects.equals(getOwner(), toDo.getOwner());
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(getToDoId(), getName(), getDueDate(), getDescription(), getReminder(), getOwner());
+    return Objects.hash(
+        getToDoId(),
+        getName(),
+        getDueDate(),
+        getDescription(),
+        getReminder(),
+        getOwner());
   }
 
 

@@ -171,26 +171,38 @@ public class TimeTable {
    * @param timeTableEntryId the time table entry id
    */
   public void removeTimeTableEntry(Long timeTableEntryId) {
-    this.timeTableEntries.stream().filter(timeTableEntry -> Objects.equals(timeTableEntry
-        .getTimeTableEntryId(), timeTableEntryId)).findFirst().ifPresent(this::removeTimeTableEntry);
+    this.timeTableEntries.stream()
+        .filter(timeTableEntry -> Objects.equals(timeTableEntry.getTimeTableEntryId(),
+            timeTableEntryId))
+        .findFirst()
+        .ifPresent(this::removeTimeTableEntry);
   }
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof TimeTable)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof TimeTable)) {
+      return false;
+    }
     TimeTable timeTable = (TimeTable) o;
-    return Objects.equals(getTimetableId(), timeTable.getTimetableId()) &&
-        Objects.equals(getTimetableName(), timeTable.getTimetableName()) &&
-        Objects.equals(getValidFrom(), timeTable.getValidFrom()) &&
-        Objects.equals(getValidTo(), timeTable.getValidTo()) &&
-        Objects.equals(getTimeTableEntries(), timeTable.getTimeTableEntries());
+    return Objects.equals(getTimetableId(), timeTable.getTimetableId())
+        && Objects.equals(getTimetableName(), timeTable.getTimetableName())
+        && Objects.equals(getValidFrom(), timeTable.getValidFrom())
+        && Objects.equals(getValidTo(), timeTable.getValidTo())
+        && Objects.equals(getTimeTableEntries(), timeTable.getTimeTableEntries());
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(getTimetableId(), getTimetableName(), getValidFrom(), getValidTo(), getTimeTableEntries());
+    return Objects.hash(
+        getTimetableId(),
+        getTimetableName(),
+        getValidFrom(),
+        getValidTo(),
+        getTimeTableEntries());
   }
 
 

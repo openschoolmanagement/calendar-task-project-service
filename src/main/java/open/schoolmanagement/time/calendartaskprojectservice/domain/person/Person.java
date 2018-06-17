@@ -132,13 +132,17 @@ public class Person {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Person)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Person)) {
+      return false;
+    }
     Person person = (Person) o;
-    return Objects.equals(getPersonId(), person.getPersonId()) &&
-        Objects.equals(getEmailAddress(), person.getEmailAddress()) &&
-        Objects.equals(getFirstName(), person.getFirstName()) &&
-        Objects.equals(getLastName(), person.getLastName());
+    return Objects.equals(getPersonId(), person.getPersonId())
+        && Objects.equals(getEmailAddress(), person.getEmailAddress())
+        && Objects.equals(getFirstName(), person.getFirstName())
+        && Objects.equals(getLastName(), person.getLastName());
   }
 
   @Override

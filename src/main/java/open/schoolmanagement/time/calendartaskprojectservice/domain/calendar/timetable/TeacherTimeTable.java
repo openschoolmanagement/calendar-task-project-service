@@ -137,11 +137,15 @@ public class TeacherTimeTable {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof TeacherTimeTable)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof TeacherTimeTable)) {
+      return false;
+    }
     TeacherTimeTable that = (TeacherTimeTable) o;
-    return Objects.equals(getTeacherTimetableId(), that.getTeacherTimetableId()) &&
-        Objects.equals(getTeacher(), that.getTeacher());
+    return Objects.equals(getTeacherTimetableId(), that.getTeacherTimetableId())
+        && Objects.equals(getTeacher(), that.getTeacher());
   }
 
   @Override
@@ -187,7 +191,8 @@ public class TeacherTimeTable {
      * @param timeTableEntries the time table entries
      * @return the time table entries
      */
-    public TeacherTimeTableBuilder setTimeTableEntries(Collection<TimeTableEntry> timeTableEntries) {
+    public TeacherTimeTableBuilder setTimeTableEntries(
+        Collection<TimeTableEntry> timeTableEntries) {
       this.timeTableEntries = timeTableEntries;
       return this;
     }
