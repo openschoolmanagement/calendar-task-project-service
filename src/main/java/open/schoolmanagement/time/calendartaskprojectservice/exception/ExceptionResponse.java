@@ -16,16 +16,20 @@ package open.schoolmanagement.time.calendartaskprojectservice.exception;
 import java.util.Date;
 
 
+/**
+ * The type Exception response.
+ */
 public class ExceptionResponse {
   private Date timestamp;
   private String message;
   private String details;
 
   /**
-   * ExceptionResponse: convert the Exception into a externalised form
+   * ExceptionResponse: convert the Exception into a externalised form.
+   *
    * @param timestamp Timestamp when the exception happend
-   * @param message What went wrong!
-   * @param details Details of the error
+   * @param message   What went wrong!
+   * @param details   Details of the error
    */
   public ExceptionResponse(Date timestamp, String message, String details) {
     super();
@@ -34,14 +38,29 @@ public class ExceptionResponse {
     this.details = details;
   }
 
+  /**
+   * Gets timestamp.
+   *
+   * @return the timestamp
+   */
   public Date getTimestamp() {
     return timestamp;
   }
 
+  /**
+   * Gets message.
+   *
+   * @return the message
+   */
   public String getMessage() {
     return message;
   }
 
+  /**
+   * Gets details.
+   *
+   * @return the details
+   */
   public String getDetails() {
     return details;
   }

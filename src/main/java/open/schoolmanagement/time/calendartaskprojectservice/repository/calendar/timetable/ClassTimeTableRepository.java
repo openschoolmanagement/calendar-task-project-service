@@ -13,10 +13,9 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.repository.calendar.timetable;
 
-import java.util.UUID;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable.ClassTimeTable;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ClassTimeTableRepository extends CrudRepository<ClassTimeTable, UUID> {
+public interface ClassTimeTableRepository extends CrudRepository<ClassTimeTable, Long> {
 
 }

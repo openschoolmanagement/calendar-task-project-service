@@ -13,7 +13,43 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
+/**
+ * The enum School hour.
+ */
 public enum SchoolHour {
 
-  FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH, SEVENTH, EIGHTH, NINETH, TENTH, EVELENTH;
+  /**
+   * First school hour.
+   */
+  FIRST, /**
+   * Second school hour.
+   */
+  SECOND, /**
+   * Third school hour.
+   */
+  THIRD, /**
+   * Fourth school hour.
+   */
+  FOURTH, /**
+   * Fifth school hour.
+   */
+  FIFTH, /**
+   * Sixth school hour.
+   */
+  SIXTH, /**
+   * Seventh school hour.
+   */
+  SEVENTH, /**
+   * Eighth school hour.
+   */
+  EIGHTH, /**
+   * Nineth school hour.
+   */
+  NINETH, /**
+   * Tenth school hour.
+   */
+  TENTH, /**
+   * Evelenth school hour.
+   */
+  EVELENTH;
 }

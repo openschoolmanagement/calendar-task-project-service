@@ -16,7 +16,6 @@ package open.schoolmanagement.time.calendartaskprojectservice.controller.calenda
 import java.util.Collection;
 import java.util.Date;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.appointment.Appointment;
-import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 import open.schoolmanagement.time.calendartaskprojectservice.service.calendar.CalendarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,12 +44,12 @@ public class CalendarController {
   @GetMapping(path = "/appointment/")
   Collection<Appointment> listAppointments() {
 
-//    Person person = Person.builder()
-//        .personId(123L)
-//        .emailAddress("abcd@abc.de")
-//        .firstName("Heinz")
-//        .lastName("Becker")
-//        .build();
+    //    Person person = Person.builder()
+    //        .personId(123L)
+    //        .emailAddress("abcd@abc.de")
+    //        .firstName("Heinz")
+    //        .lastName("Becker")
+    //        .build();
 
     return calendarService.listAppointmentsForUser(null);
   }

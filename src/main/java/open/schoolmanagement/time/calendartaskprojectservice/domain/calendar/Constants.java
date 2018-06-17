@@ -13,26 +13,80 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar;
 
+/**
+ * The interface Constants.
+ */
 public interface Constants {
 
+  /**
+   * The constant BAWUE.
+   */
   String BAWUE = "BW";
+  /**
+   * The constant BAY.
+   */
   String BAY = "BY";
+  /**
+   * The constant BER.
+   */
   String BER = "BE";
+  /**
+   * The constant BRA.
+   */
   String BRA = "BB";
+  /**
+   * The constant BREM.
+   */
   String BREM = "HB";
+  /**
+   * The constant HHAM.
+   */
   String HHAM = "HH";
+  /**
+   * The constant HES.
+   */
   String HES = "HE";
+  /**
+   * The constant MECPOM.
+   */
   String MECPOM = "MV";
+  /**
+   * The constant NIESA.
+   */
   String NIESA = "NI";
+  /**
+   * The constant NOWEST.
+   */
   String NOWEST = "NW";
+  /**
+   * The constant RHEINPFALZ.
+   */
   String RHEINPFALZ = "RP";
+  /**
+   * The constant SAAR.
+   */
   String SAAR = "SL";
+  /**
+   * The constant SAX.
+   */
   String SAX = "SN";
+  /**
+   * The constant SAXSTOP.
+   */
   String SAXSTOP = "ST";
+  /**
+   * The constant SCHLESWIG.
+   */
   String SCHLESWIG = "SH";
+  /**
+   * The constant THUER.
+   */
   String THUER = "TH";
 
 
+  /**
+   * The constant DEFAULT_COURSE_DURATION.
+   */
   public static long DEFAULT_COURSE_DURATION = 3000000; // 45 min + 5 min break
 
 

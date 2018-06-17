@@ -13,7 +13,31 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
+/**
+ * The enum Week day.
+ */
 public enum WeekDay {
 
-  MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+  /**
+   * Monday week day.
+   */
+  MONDAY, /**
+   * Tuesday week day.
+   */
+  TUESDAY, /**
+   * Wednesday week day.
+   */
+  WEDNESDAY, /**
+   * Thursday week day.
+   */
+  THURSDAY, /**
+   * Friday week day.
+   */
+  FRIDAY, /**
+   * Saturday week day.
+   */
+  SATURDAY, /**
+   * Sunday week day.
+   */
+  SUNDAY
 }

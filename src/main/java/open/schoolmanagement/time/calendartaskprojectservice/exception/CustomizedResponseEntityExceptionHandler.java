@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/**
+ * The type Customized response entity exception handler.
+ */
 @ControllerAdvice
 @RestController
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
@@ -41,7 +44,8 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
                                                                      WebRequest request) {
     ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
         request.getDescription(false));
-    return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    return new ResponseEntity<ExceptionResponse>(exceptionResponse,
+        HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
   /**
@@ -49,24 +53,26 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
    *
    * @param ex      MeetingCreationFailedException
    * @param request WebRequest
-   * @return ExceptionResponse
+   * @return ExceptionResponse response entity
    */
   @ExceptionHandler(MeetingCreationFailedException.class)
-  public final ResponseEntity<ExceptionResponse>
-        handleMeetingCreationFailed(MeetingCreationFailedException ex, WebRequest request) {
+  public final ResponseEntity<ExceptionResponse> handleMeetingCreationFailed(
+       MeetingCreationFailedException ex, WebRequest request) {
     ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
         request.getDescription(false));
     return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
   }
 
-  /**Handler for Appointment Creation Failed.
+  /**
+   * Handler for Appointment Creation Failed.
    *
-   * @param ex
-   * @param request
-   * @return
+   * @param ex      the ex
+   * @param request the request
+   * @return response entity
    */
   @ExceptionHandler(AppointmentCreationFailedException.class)
-  public final ResponseEntity<ExceptionResponse> handleUserNotFoundException(AppointmentCreationFailedException ex, WebRequest request) {
+  public final ResponseEntity<ExceptionResponse> handleUserNotFoundException(
+      AppointmentCreationFailedException ex, WebRequest request) {
     ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
         request.getDescription(false));
     return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);

@@ -13,8 +13,17 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
+/**
+ * The enum Subject type.
+ */
 public enum SubjectType {
 
-  CLASSES, TEAM
+  /**
+   * Classes subject type.
+   */
+  CLASSES, /**
+   * Team subject type.
+   */
+  TEAM
 
 }

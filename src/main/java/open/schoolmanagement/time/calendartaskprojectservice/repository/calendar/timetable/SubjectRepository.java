@@ -10,12 +10,11 @@
    See the License for the specific language governing permissions and
    limitations under the License.
  */
+
 package open.schoolmanagement.time.calendartaskprojectservice.repository.calendar.timetable;
 
 import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.SchoolSubject;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.UUID;
-
-public interface SubjectRepository extends CrudRepository<SchoolSubject, UUID> {
+public interface SubjectRepository extends CrudRepository<SchoolSubject, Long> {
 }

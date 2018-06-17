@@ -13,6 +13,7 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.project;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,30 +21,169 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import lombok.Builder;
-import lombok.Getter;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.task.Task;
 
-@Builder
+
+/**
+ * The type Project task.
+ */
 @Entity
 @Table(name = "projecttask")
 public class ProjectTask {
 
-  @Getter
+
   @Id
   @GeneratedValue
   @Column(name = "projecttask_id")
   private Long projectTaskId;
 
-  @Getter
+
   @OneToOne(mappedBy = "project_id",
       fetch = FetchType.LAZY)
   private Project project;
 
 
-  @Getter
   @OneToOne(mappedBy = "task_id",
       fetch = FetchType.LAZY)
   private Task task;
 
+  /**
+   * Instantiates a new Project task.
+   *
+   * @param builder the builder
+   */
+  public ProjectTask(ProjectTaskBuilder builder) {
+
+    this.project = builder.project;
+    this.task = builder.task;
+  }
+
+
+  /**
+   * Gets project task id.
+   *
+   * @return the project task id
+   */
+  public Long getProjectTaskId() {
+    return projectTaskId;
+  }
+
+  /**
+   * Sets project task id.
+   *
+   * @param projectTaskId the project task id
+   */
+  public void setProjectTaskId(Long projectTaskId) {
+    this.projectTaskId = projectTaskId;
+  }
+
+  /**
+   * Gets project.
+   *
+   * @return the project
+   */
+  public Project getProject() {
+    return project;
+  }
+
+  /**
+   * Sets project.
+   *
+   * @param project the project
+   */
+  public void setProject(Project project) {
+    this.project = project;
+  }
+
+  /**
+   * Gets task.
+   *
+   * @return the task
+   */
+  public Task getTask() {
+    return task;
+  }
+
+  /**
+   * Sets task.
+   *
+   * @param task the task
+   */
+  public void setTask(Task task) {
+    this.task = task;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ProjectTask)) {
+      return false;
+    }
+    ProjectTask that = (ProjectTask) o;
+    return Objects.equals(getProjectTaskId(), that.getProjectTaskId())
+        && Objects.equals(getProject(), that.getProject())
+        && Objects.equals(getTask(), that.getTask());
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(getProjectTaskId(), getProject(), getTask());
+  }
+
+
+  /**
+   * The type Project task builder.
+   */
+  public static final class ProjectTaskBuilder {
+
+    private Project project;
+    private Task task;
+
+    private ProjectTaskBuilder() {
+
+    }
+
+    /**
+     * Builder project task builder.
+     *
+     * @return the project task builder
+     */
+    public ProjectTaskBuilder builder() {
+      return new ProjectTaskBuilder();
+    }
+
+    /**
+     * Sets project.
+     *
+     * @param project the project
+     * @return the project
+     */
+    public ProjectTaskBuilder setProject(Project project) {
+      this.project = project;
+      return this;
+    }
+
+    /**
+     * Sets task.
+     *
+     * @param task the task
+     * @return the task
+     */
+    public ProjectTaskBuilder setTask(Task task) {
+      this.task = task;
+      return this;
+    }
+
+    /**
+     * Build project task.
+     *
+     * @return the project task
+     */
+    public ProjectTask build() {
+      return new ProjectTask(this);
+    }
+  }
 }
