@@ -244,10 +244,10 @@ public class Appointment {
   public int hashCode() {
 
     return Objects.hash(getAppointmentId(),
-                        getStart(),
-                        getEnd(),
-                        getAppointmentSubject(),
-                        getOwner());
+        getStart(),
+        getEnd(),
+        getAppointmentSubject(),
+        getOwner());
   }
 
   /**
@@ -265,6 +265,10 @@ public class Appointment {
 
     private AppointmentBuilder() {
 
+    }
+
+    public static final AppointmentBuilder builder() {
+      return new AppointmentBuilder();
     }
 
 

@@ -151,6 +151,14 @@ public class Person {
     return Objects.hash(getPersonId(), getEmailAddress(), getFirstName(), getLastName());
   }
 
+  /**
+   * Builder person builder.
+   *
+   * @return the person builder
+   */
+  public static PersonBuilder builder() {
+    return new PersonBuilder();
+  }
 
   /**
    * The type Person builder.
@@ -167,14 +175,7 @@ public class Person {
 
     ;
 
-    /**
-     * Builder person builder.
-     *
-     * @return the person builder
-     */
-    public static PersonBuilder builder() {
-      return new PersonBuilder();
-    }
+
 
 
     /**

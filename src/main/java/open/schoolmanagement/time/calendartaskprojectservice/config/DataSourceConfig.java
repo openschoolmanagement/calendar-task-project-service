@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * Configuration of the data source.
@@ -33,6 +34,7 @@ public class DataSourceConfig {
    * @return the data source
    */
   @Bean
+  @Profile("prod")
   public DataSource dataSource(
       @Value("#{environment.JDBC_DATABASE_URL}") String databaseUrl,
       @Value("#{environment.JDBC_DATABASE_USERNAME}") String username,
