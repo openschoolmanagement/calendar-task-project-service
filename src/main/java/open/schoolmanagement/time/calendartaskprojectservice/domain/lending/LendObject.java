@@ -20,6 +20,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
@@ -35,6 +36,7 @@ public class LendObject {
 
   @Id
   @GeneratedValue
+  @Column(name = "lendobject_id")
   private Long id;
 
 
@@ -42,11 +44,13 @@ public class LendObject {
   private String name;
 
 
-  @OneToOne(mappedBy = "owner", fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "owner")
   private Person owner;
 
 
-  @OneToOne(mappedBy = "lendbywhom", fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "lendbywhom")
   private Person lendByWhom;
 
 
@@ -69,6 +73,10 @@ public class LendObject {
     this.whenLend = builder.whenLend;
     this.dueToReturn = builder.dueToReturn;
     this.returned = builder.returned;
+  }
+
+  public static LendObjectBuilder builder() {
+    return new LendObjectBuilder();
   }
 
   /**
@@ -241,6 +249,10 @@ public class LendObject {
     private Date whenLend;
     private Date dueToReturn;
     private boolean returned;
+
+    private LendObjectBuilder(){
+
+    }
 
     /**
      * Builder lend object builder.

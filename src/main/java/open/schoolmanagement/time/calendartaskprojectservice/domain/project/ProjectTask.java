@@ -19,6 +19,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.task.Task;
@@ -38,13 +39,14 @@ public class ProjectTask {
   private Long projectTaskId;
 
 
-  @OneToOne(mappedBy = "project_id",
+  @OneToOne(
       fetch = FetchType.LAZY)
+  @JoinColumn(name = "project_id")
   private Project project;
 
 
-  @OneToOne(mappedBy = "task_id",
-      fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "task_id")
   private Task task;
 
   /**
@@ -52,10 +54,14 @@ public class ProjectTask {
    *
    * @param builder the builder
    */
-  public ProjectTask(ProjectTaskBuilder builder) {
+  private ProjectTask(ProjectTaskBuilder builder) {
 
     this.project = builder.project;
     this.task = builder.task;
+  }
+
+  public static ProjectTaskBuilder builder() {
+    return new ProjectTaskBuilder();
   }
 
 

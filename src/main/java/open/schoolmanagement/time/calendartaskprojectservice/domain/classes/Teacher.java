@@ -38,11 +38,11 @@ public class Teacher {
   @Column(name = "teacher_id")
   private Long teacherId;
 
-  @OneToOne(mappedBy = "person")
+  @OneToOne
   @JoinColumn(name = "person_id")
   private Person person;
 
-  @OneToMany(mappedBy = "teacher_id", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "teacher")
   private Collection<TeacherSubjectRelation> subjectRelations;
 
   /**

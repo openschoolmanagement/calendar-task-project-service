@@ -70,6 +70,7 @@ public class State {
    */
   @Column(name = "isocodeshort")
   String isoCodeShort; //SL
+
   @Id
   @GeneratedValue
   private Long id;
@@ -80,6 +81,12 @@ public class State {
     this.isoCode = builder.isoCode;
     this.isoCodeShort = builder.isoCodeShort;
   }
+
+
+  public static StateBuilder builder() {
+    return new StateBuilder();
+  }
+
 
   /**
    * Gets id.
@@ -182,6 +189,10 @@ public class State {
     private String name;
     private String isoCode;
     private String isoCodeShort;
+
+    private StateBuilder(){
+
+    }
 
     /**
      * Sets name.

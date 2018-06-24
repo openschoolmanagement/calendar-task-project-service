@@ -21,6 +21,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -46,15 +47,16 @@ public class TimeTable {
   @Column(name = "validto")
   private Date validTo;
 
-  @OneToMany(mappedBy = "timetable_id", fetch = FetchType.LAZY)
-  private Collection<TimeTableEntry> timeTableEntries;
+  @OneToMany
+  @JoinColumn(name = "timetable_id")
+  private Collection<TimeTableRelation> timeTableRelations;
 
   private TimeTable(TimeTableBuilder builder) {
     this.timetableId = builder.timetableId;
     this.timetableName = builder.timetableName;
     this.validFrom = builder.validFrom;
     this.validTo = builder.validTo;
-    this.timeTableEntries = builder.timeTableEntries;
+    this.timeTableRelations = builder.timeTableRelations;
   }
 
   /**
@@ -134,48 +136,48 @@ public class TimeTable {
    *
    * @return the time table entries
    */
-  public Collection<TimeTableEntry> getTimeTableEntries() {
-    return timeTableEntries;
+  public Collection<TimeTableRelation> getTimeTableRelations() {
+    return timeTableRelations;
   }
 
   /**
    * Sets time table entries.
    *
-   * @param timeTableEntries the time table entries
+   * @param timeTableRelations the time table entries
    */
-  public void setTimeTableEntries(Collection<TimeTableEntry> timeTableEntries) {
-    this.timeTableEntries = timeTableEntries;
+  public void setTimeTableRelations(Collection<TimeTableRelation> timeTableRelations) {
+    this.timeTableRelations = timeTableRelations;
   }
 
   /**
    * Add time table entry.
    *
-   * @param timeTableEntry the time table entry
+   * @param timeTableRelation the time table entry
    */
-  public void addTimeTableEntry(TimeTableEntry timeTableEntry) {
-    this.timeTableEntries.add(timeTableEntry);
+  public void addTimeTableRelation(TimeTableRelation timeTableRelation) {
+    this.timeTableRelations.add(timeTableRelation);
   }
 
   /**
    * Remove time table entry.
    *
-   * @param timeTableEntry the time table entry
+   * @param timeTableRelation the time table entry
    */
-  public void removeTimeTableEntry(TimeTableEntry timeTableEntry) {
-    this.timeTableEntries.remove(timeTableEntry);
+  public void removeTimeTableRelation(TimeTableRelation timeTableRelation) {
+    this.timeTableRelations.remove(timeTableRelation);
   }
 
   /**
    * Remove time table entry.
    *
-   * @param timeTableEntryId the time table entry id
+   * @param timeTableRelationId the time table entry id
    */
-  public void removeTimeTableEntry(Long timeTableEntryId) {
-    this.timeTableEntries.stream()
-        .filter(timeTableEntry -> Objects.equals(timeTableEntry.getTimeTableEntryId(),
-            timeTableEntryId))
+  public void removeTimeTableRelation(Long timeTableRelationId) {
+    this.timeTableRelations.stream()
+        .filter(timeTableEntry -> Objects.equals(timeTableEntry.getTimeTableRelationId(),
+        timeTableRelationId))
         .findFirst()
-        .ifPresent(this::removeTimeTableEntry);
+        .ifPresent(this::removeTimeTableRelation);
   }
 
   @Override
@@ -191,7 +193,7 @@ public class TimeTable {
         && Objects.equals(getTimetableName(), timeTable.getTimetableName())
         && Objects.equals(getValidFrom(), timeTable.getValidFrom())
         && Objects.equals(getValidTo(), timeTable.getValidTo())
-        && Objects.equals(getTimeTableEntries(), timeTable.getTimeTableEntries());
+        && Objects.equals(getTimeTableRelations(), timeTable.getTimeTableRelations());
   }
 
   @Override
@@ -202,7 +204,7 @@ public class TimeTable {
         getTimetableName(),
         getValidFrom(),
         getValidTo(),
-        getTimeTableEntries());
+        getTimeTableRelations());
   }
 
 
@@ -214,7 +216,7 @@ public class TimeTable {
     private String timetableName;
     private Date validFrom;
     private Date validTo;
-    private Collection<TimeTableEntry> timeTableEntries;
+    private Collection<TimeTableRelation> timeTableRelations;
 
     /**
      * Sets timetable id.
@@ -263,11 +265,11 @@ public class TimeTable {
     /**
      * Sets time table entries.
      *
-     * @param timeTableEntries the time table entries
+     * @param timeTableRelations the time table entries
      * @return the time table entries
      */
-    public TimeTableBuilder setTimeTableEntries(Collection<TimeTableEntry> timeTableEntries) {
-      this.timeTableEntries = timeTableEntries;
+    public TimeTableBuilder setTimeTableEntries(Collection<TimeTableRelation> timeTableRelations) {
+      this.timeTableRelations = timeTableRelations;
       return this;
     }
 

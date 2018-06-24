@@ -20,6 +20,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.Constants;
@@ -35,6 +36,7 @@ public class PublicHoliday implements Constants {
 
   @Id
   @GeneratedValue
+  @Column(name = "publicholiday_id")
   private Long id;
 
   @Column(name = "day")
@@ -43,8 +45,8 @@ public class PublicHoliday implements Constants {
   @Column(name = "name")
   private String name;
 
-  @OneToOne(mappedBy = "state",
-      fetch = FetchType.LAZY)
+  @OneToOne
+  @JoinColumn(name = "state_id")
   private State affectedCountryInStateCode;
 
   /**

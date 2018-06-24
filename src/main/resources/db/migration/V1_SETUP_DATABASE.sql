@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS OSM_CALENDAR ;
+CREATE DATABASE  IF NOT EXISTS OSM_CALENDAR;
 
 CREATE TABLE IF NOT EXISTS OSM_CALENDAR.PERSON (
     person_id BIGINT NOT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS OSM_CALENDAR.MEETING_INVITEDPERSON_RELATION (
         REFERENCES OSM_CALENDAR.MEETING (meeting_id)
 );
 
-CREATE TABLE IF NOT EXISTS OSM_CALENDAR.SCHOOLCLASS (
+CREATE TABLE IF NOT EXISTS OSM_CALENDAR.schoolclass (
     schoolclass_id BIGINT NOT NULL,
     schoolclassname TEXT CHARACTER SET UTF8,
     schoolclassteacher BIGINT NOT NULL,
@@ -155,6 +155,7 @@ CREATE TABLE IF NOT EXISTS OSM_CALENDAR.TIMETABLEENTRY (
         REFERENCES OSM_CALENDAR.TEACHER (teacher_id),
 	foreign key (schoolsubject) references OSM_CALENDAR.SCHOOLSUBJECT (schoolsubject_id)
 );
+
 
 CREATE TABLE IF NOT EXISTS OSM_CALENDAR.CLASSTIMETABLE (
     classtimetable_id BIGINT NOT NULL,
@@ -199,5 +200,51 @@ create table IF not exists OSM_CALENDAR.TODO (
     primary key(todo_id),
     FOREIGN KEY (todo_owner)
         REFERENCES OSM_CALENDAR.PERSON (person_id)
-)
+);
+
+
+create table if not exists OSM_CALENDAR.STATE (
+    state_id  BIGINT NOT NULL,
+    name TEXT CHARACTER SET UTF8,
+    isoCode TEXT CHARACTER SET UTF8,
+    isoCodeShort TEXT CHARACTER SET UTF8
+     primary key (state_id)
+);
+
+create table if not exists OSM_CALENDAR.publicholiday(
+    publicholiday_id  BIGINT NOT NULL,
+    day DATE NOT NULL,
+    name TEXT CHARACTER SET UTF8,
+    state_id BIGINT NOT NULL,
+    primary key (publicholiday_id),
+    FOREIGN KEY (state_id)
+        REFERENCES OSM_CALENDAR.STATE (state_id)
+);
+
+create table if not exists OSM_CALENDAR.vacation(
+    vacation_id  BIGINT NOT NULL,
+    vacation_start DATE NOT NULL,
+    vacation_end DATE NOT NULL,
+    vacation_description TEXT CHARACTER SET UTF8,
+    vacation_state  BIGINT NOT NULL,
+    slug TEXT CHARACTER SET UTF8,
+    primary key (vacation_id),
+    FOREIGN KEY (vacation_state)
+          REFERENCES OSM_CALENDAR.STATE (state_id)
+);
+
+create table if not exists OSM_CALENDAR.lendobject(
+    lendobject_id BIGINT NOT NULL,
+    name TEXT CHARACTER SET UTF8,
+    owner BIGINT NOT NULL,
+    lendbywhom BIGINT NOT NULL,
+    whenlend DATE NOT NULL,
+    duetoreturn DATE NOT NULL,
+    returned BOOLEAN NOT NULL,
+    primary key (lendobject_id),
+    FOREIGN KEY (owner)
+          REFERENCES OSM_CALENDAR.person (person_id),
+    FOREIGN KEY (lendbywhom)
+          REFERENCES OSM_CALENDAR.person (person_id),
+);
 

@@ -57,7 +57,7 @@ public class ToDo {
 
 
   @JoinColumn(name = "todo_owner")
-  @OneToOne(mappedBy = "person_id", fetch = FetchType.EAGER)
+  @OneToOne(fetch = FetchType.EAGER)
   private Person owner;
 
   private ToDo(ToDoBuilder builder) {

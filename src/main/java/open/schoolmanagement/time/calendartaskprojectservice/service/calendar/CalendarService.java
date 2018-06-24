@@ -37,7 +37,8 @@ public class CalendarService {
    * @param description Description of ein Appointment.
    * @return a new Appointment
    **/
-  public Appointment createAppointment(Date start, Date end, String subject, String description) {
+  public Appointment createAppointment(Date start, Date end, String subject, String description,
+                                       Person owner) {
 
 
     long duration = end.getTime() - start.getTime();
@@ -47,9 +48,9 @@ public class CalendarService {
         .setDuration(duration)
         .setAppointmentSubject(subject)
         .setDescription(description)
-        .setOwner(null)
+        .setOwner(owner)
         .build();
-    //TODO Create Person out of current principal
+
 
     appointment = appointmentRepository.save(appointment);
 
@@ -64,7 +65,7 @@ public class CalendarService {
   public Collection<Appointment> listAppointmentsForUser(Person person) {
 
     if (person != null) {
-      return appointmentRepository.findByForWhom(person.getPersonId());
+      return appointmentRepository.findByOwner(person.getPersonId());
     } else {
       return null;
     }
@@ -80,7 +81,7 @@ public class CalendarService {
   public Collection<Appointment> listAppointementByDate(Date date, Person person) {
 
     if (date != null && person != null) {
-      return appointmentRepository.findByStart(date, person.getPersonId());
+      return appointmentRepository.findByStartAndOwner(date, person.getPersonId());
     } else {
       return null;
     }

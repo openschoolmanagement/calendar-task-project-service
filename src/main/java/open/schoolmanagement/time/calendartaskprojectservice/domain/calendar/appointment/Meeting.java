@@ -1,5 +1,7 @@
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.appointment;
 
+import static javax.persistence.CascadeType.ALL;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
@@ -9,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -45,11 +48,11 @@ public class Meeting {
   @Column(name = "description")
   private String description;
 
-  @OneToOne(mappedBy = "organiser")
-  @JoinColumn(name = "organiser")
+  @ManyToOne
+  @JoinColumn(name = "organiser", nullable = false)
   private Person organiser;
 
-  @OneToMany(mappedBy = "meeting", fetch = FetchType.LAZY)
+  @OneToMany(cascade=ALL, mappedBy="meeting")
   private Collection<MeetingInvitedPersonRelation> invitedPersons;
 
   private Meeting(MeetingBuilder builder) {

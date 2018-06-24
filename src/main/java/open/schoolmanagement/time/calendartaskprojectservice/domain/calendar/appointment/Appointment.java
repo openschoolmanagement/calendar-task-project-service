@@ -19,6 +19,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
@@ -53,7 +55,8 @@ public class Appointment {
   @Column(name = "location")
   private String location;
 
-  @OneToOne(mappedBy = "appointment_owner")
+  @OneToOne
+  @JoinColumn(name = "appointment_owner")
   private Person owner;
 
   /**

@@ -40,15 +40,16 @@ public class TimeTableEntry {
   @Column(name = "course")
   private String course;
 
-  @OneToOne(mappedBy = "schoolClass")
+  @OneToOne
   @JoinColumn(name = "schoolclass_id")
   private SchoolClass schoolClass;
 
-  @OneToOne(mappedBy = "timetableentry_subject")
-  private SchoolSubject timetableentrySubject;
+  @OneToOne
+  @JoinColumn(name = "schoolsubject")
+  private SchoolSubject timeTableEntrySubject;
 
-  @OneToOne(mappedBy = "teacher")
-  @JoinColumn(name = "teacher_id")
+  @OneToOne
+  @JoinColumn(name = "teacher")
   private Teacher teacher;
 
   @Column(name = "room")
@@ -64,11 +65,15 @@ public class TimeTableEntry {
 
     this.course = builder.course;
     this.schoolClass = builder.schoolClass;
-    this.timetableentrySubject = builder.timetableentrySubject;
+    this.timeTableEntrySubject = builder.timetableentrySubject;
     this.teacher = builder.teacher;
     this.room = builder.room;
     this.weekDay = builder.weekDay;
     this.schoolHour = builder.schoolHour;
+  }
+
+  public static TimeTableEntryBuilder builder() {
+    return new TimeTableEntryBuilder();
   }
 
   /**
@@ -130,17 +135,17 @@ public class TimeTableEntry {
    *
    * @return the timetableentry subject
    */
-  public SchoolSubject getTimetableentrySubject() {
-    return timetableentrySubject;
+  public SchoolSubject getTimeTableEntrySubject() {
+    return timeTableEntrySubject;
   }
 
   /**
    * Sets timetableentry subject.
    *
-   * @param timetableentrySubject the timetableentry subject
+   * @param timeTableEntrySubject the timetableentry subject
    */
-  public void setTimetableentrySubject(SchoolSubject timetableentrySubject) {
-    this.timetableentrySubject = timetableentrySubject;
+  public void setTimeTableEntrySubject(SchoolSubject timeTableEntrySubject) {
+    this.timeTableEntrySubject = timeTableEntrySubject;
   }
 
   /**
@@ -227,7 +232,7 @@ public class TimeTableEntry {
     return Objects.equals(getTimeTableEntryId(), that.getTimeTableEntryId())
         && Objects.equals(getCourse(), that.getCourse())
         && Objects.equals(getSchoolClass(), that.getSchoolClass())
-        && Objects.equals(getTimetableentrySubject(), that.getTimetableentrySubject())
+        && Objects.equals(getTimeTableEntrySubject(), that.getTimeTableEntrySubject())
         && getWeekDay() == that.getWeekDay()
         && getSchoolHour() == that.getSchoolHour();
   }
@@ -239,17 +244,16 @@ public class TimeTableEntry {
         getTimeTableEntryId(),
         getCourse(),
         getSchoolClass(),
-        getTimetableentrySubject(),
+        getTimeTableEntrySubject(),
         getWeekDay(),
         getSchoolHour());
   }
-
 
   /**
    * The type Time table entry builder.
    */
   public static final class TimeTableEntryBuilder {
-    private Long timeTableEntryId;
+
     private String course;
     private SchoolClass schoolClass;
     private SchoolSubject timetableentrySubject;
@@ -258,16 +262,11 @@ public class TimeTableEntry {
     private WeekDay weekDay;
     private SchoolHour schoolHour;
 
-    /**
-     * Sets time table entry id.
-     *
-     * @param timeTableEntryId the time table entry id
-     * @return the time table entry id
-     */
-    public TimeTableEntryBuilder setTimeTableEntryId(Long timeTableEntryId) {
-      this.timeTableEntryId = timeTableEntryId;
-      return this;
+
+    private TimeTableEntryBuilder() {
+
     }
+
 
     /**
      * Sets course.

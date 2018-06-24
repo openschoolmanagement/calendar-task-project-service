@@ -25,11 +25,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.SchoolClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
 
 
-/**
- * The type Class time table.
- */
 @Entity
 @Table(name = "classtimetable")
 public class ClassTimeTable {
@@ -39,106 +37,57 @@ public class ClassTimeTable {
   @Column(name = "classtimetable_id")
   private Long classTimeTableId;
 
-  @OneToOne(mappedBy = "schoolclass")
+  @OneToOne
   @JoinColumn(name = "schoolclass_id")
   private SchoolClass schoolClass;
 
-  @OneToMany(mappedBy = "timetableentry", fetch = FetchType.LAZY)
-  private Collection<TimeTableEntry> timeTableEntries;
+  @OneToMany
+  @JoinColumn(name = "classtimetable_id")
+  private Collection<TimeTableRelation> timeTableRelations;
 
-  /**
-   * Instantiates a new Class time table.
-   *
-   * @param builder the builder
-   */
   private ClassTimeTable(ClassTimeTableBuilder builder) {
     this.schoolClass = builder.schoolClass;
-    this.timeTableEntries = builder.timeTableEntries;
+    this.timeTableRelations = builder.timeTableRelations;
   }
 
 
-  /**
-   * Gets class time table id.
-   *
-   * @return the class time table id
-   */
   public Long getClassTimeTableId() {
     return classTimeTableId;
   }
 
-  /**
-   * Sets class time table id.
-   *
-   * @param classTimeTableId the class time table id
-   */
   public void setClassTimeTableId(Long classTimeTableId) {
     this.classTimeTableId = classTimeTableId;
   }
 
-  /**
-   * Gets school class.
-   *
-   * @return the school class
-   */
   public SchoolClass getSchoolClass() {
     return schoolClass;
   }
 
-  /**
-   * Sets school class.
-   *
-   * @param schoolClass the school class
-   */
   public void setSchoolClass(SchoolClass schoolClass) {
     this.schoolClass = schoolClass;
   }
 
-  /**
-   * Gets time table entries.
-   *
-   * @return the time table entries
-   */
-  public Collection<TimeTableEntry> getTimeTableEntries() {
-    return timeTableEntries;
+  public Collection<TimeTableRelation> getTimeTableRelations() {
+    return timeTableRelations;
   }
 
-  /**
-   * Sets time table entries.
-   *
-   * @param timeTableEntries the time table entries
-   */
-  public void setTimeTableEntries(Collection<TimeTableEntry> timeTableEntries) {
-    this.timeTableEntries = timeTableEntries;
+  public void setTimeTableEntries(Collection<TimeTableRelation> timeTableRelations) {
+    this.timeTableRelations = timeTableRelations;
   }
 
 
-  /**
-   * Add time table entry.
-   *
-   * @param timeTableEntry the time table entry
-   */
-  public void addTimeTableEntry(TimeTableEntry timeTableEntry) {
-    this.timeTableEntries.add(timeTableEntry);
+  public void addTimeTableRelation(TimeTableRelation timeTableRelation) {
+    this.timeTableRelations.add(timeTableRelation);
   }
 
-  /**
-   * Remove time table entry.
-   *
-   * @param timeTableEntry the time table entry
-   */
-  public void removeTimeTableEntry(TimeTableEntry timeTableEntry) {
-    this.timeTableEntries.remove(timeTableEntry);
+  public void removeTimeTableRelation(TimeTableRelation timeTableRelation) {
+    this.timeTableRelations.remove(timeTableRelation);
   }
 
-  /**
-   * Remove time table entry.
-   *
-   * @param timeTableEntryId the time table entry id
-   */
-  public void removeTimeTableEntry(Long timeTableEntryId) {
-    this.timeTableEntries.stream().filter(timeTableEntry -> Objects.equals(timeTableEntry
-        .getTimeTableEntryId(), timeTableEntryId)).findFirst()
-        .ifPresent(this::removeTimeTableEntry);
+  public void removeTimeTableEntry(Long timeTableRelationId) {
+    this.timeTableRelations.stream().filter(timeTableRelation -> Objects.equals(timeTableRelation
+        .getTimeTableRelationId(), timeTableRelationId)).findFirst()
+        .ifPresent(this::removeTimeTableRelation);
   }
 
   @Override
@@ -152,60 +101,35 @@ public class ClassTimeTable {
     ClassTimeTable that = (ClassTimeTable) o;
     return Objects.equals(getClassTimeTableId(), that.getClassTimeTableId())
         && Objects.equals(getSchoolClass(), that.getSchoolClass())
-        && Objects.equals(getTimeTableEntries(), that.getTimeTableEntries());
+        && Objects.equals(getTimeTableRelations(), that.getTimeTableRelations());
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(getClassTimeTableId(), getSchoolClass(), getTimeTableEntries());
+    return Objects.hash(getClassTimeTableId(), getSchoolClass(), getTimeTableRelations());
   }
 
 
-  /**
-   * The type Class time table builder.
-   */
   public static final class ClassTimeTableBuilder {
 
     private SchoolClass schoolClass;
-    private Collection<TimeTableEntry> timeTableEntries;
+    private Collection<TimeTableRelation> timeTableRelations;
 
-    /**
-     * Builder class time table builder.
-     *
-     * @return the class time table builder
-     */
     public static ClassTimeTableBuilder builder() {
       return new ClassTimeTableBuilder();
     }
 
-    /**
-     * Sets school class.
-     *
-     * @param schoolClass the school class
-     * @return the school class
-     */
     public ClassTimeTableBuilder setSchoolClass(SchoolClass schoolClass) {
       this.schoolClass = schoolClass;
       return this;
     }
 
-    /**
-     * Sets time table entries.
-     *
-     * @param timeTableEntries the time table entries
-     * @return the time table entries
-     */
-    public ClassTimeTableBuilder setTimeTableEntries(Collection<TimeTableEntry> timeTableEntries) {
-      this.timeTableEntries = timeTableEntries;
+    public ClassTimeTableBuilder setTimeTableEntries(Collection<TimeTableRelation> timeTableRelations) {
+      this.timeTableRelations = timeTableRelations;
       return this;
     }
 
-    /**
-     * Build class time table.
-     *
-     * @return the class time table
-     */
     public ClassTimeTable build() {
       return new ClassTimeTable(this);
     }

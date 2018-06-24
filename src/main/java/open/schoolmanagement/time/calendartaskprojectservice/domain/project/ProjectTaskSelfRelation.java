@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -24,13 +25,13 @@ public class ProjectTaskSelfRelation {
   private Long projectTaskSelfRelationId;
 
 
-  @OneToOne(mappedBy = "projecttask_id",
-      fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "projecttask_id")
   private ProjectTask projectTask;
 
 
-  @OneToOne(mappedBy = "predecessor_id",
-      fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "predecessor_id")
   private ProjectTask predecessor;
 
   /**
@@ -38,10 +39,15 @@ public class ProjectTaskSelfRelation {
    *
    * @param builder the builder
    */
-  public ProjectTaskSelfRelation(ProjectTaskBuilder builder) {
+  private ProjectTaskSelfRelation(ProjectTaskSelfRelationBuilder builder) {
 
     this.projectTask = builder.projectTask;
     this.predecessor = builder.predecessor;
+  }
+
+
+  public ProjectTaskSelfRelationBuilder builder() {
+    return new ProjectTaskSelfRelationBuilder();
   }
 
 
@@ -123,23 +129,15 @@ public class ProjectTaskSelfRelation {
   /**
    * The type Project task builder.
    */
-  static final class ProjectTaskBuilder {
+  public static final class ProjectTaskSelfRelationBuilder {
 
     private ProjectTask projectTask;
     private ProjectTask predecessor;
 
-    private ProjectTaskBuilder() {
+    private ProjectTaskSelfRelationBuilder() {
 
     }
 
-    /**
-     * Builder project task builder.
-     *
-     * @return the project task builder
-     */
-    public ProjectTaskBuilder builder() {
-      return new ProjectTaskBuilder();
-    }
 
     /**
      * Sets project task.
@@ -147,7 +145,7 @@ public class ProjectTaskSelfRelation {
      * @param projectTask the project task
      * @return the project task
      */
-    public ProjectTaskBuilder setProjectTask(ProjectTask projectTask) {
+    public ProjectTaskSelfRelationBuilder setProjectTask(ProjectTask projectTask) {
       this.projectTask = projectTask;
       return this;
     }
@@ -158,7 +156,7 @@ public class ProjectTaskSelfRelation {
      * @param predecessor the predecessor
      * @return the predecessor
      */
-    public ProjectTaskBuilder setPredecessor(ProjectTask predecessor) {
+    public ProjectTaskSelfRelationBuilder setPredecessor(ProjectTask predecessor) {
       this.predecessor = predecessor;
       return this;
     }

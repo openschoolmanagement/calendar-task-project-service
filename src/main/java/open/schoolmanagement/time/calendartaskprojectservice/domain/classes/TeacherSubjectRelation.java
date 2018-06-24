@@ -19,11 +19,11 @@ public class TeacherSubjectRelation {
   @GeneratedValue
   private Long teacherSubjectRelationId;
 
-  @OneToOne(mappedBy = "teacher")
+  @OneToOne
   @JoinColumn(name = "teacher_id")
   private Teacher teacher;
 
-  @OneToOne(mappedBy = "schoolsubject")
+  @OneToOne
   @JoinColumn(name = "schoolsubject_id")
   private SchoolSubject schoolSubject;
 

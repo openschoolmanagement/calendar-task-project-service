@@ -18,6 +18,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,7 +39,8 @@ public class SchoolClass {
   @Column(name = "schoolclass_name")
   private String name;
 
-  @OneToOne(mappedBy = "schoolclass_teacher")
+  @OneToOne
+  @JoinColumn(name = "schoolclassteacher")
   private Teacher classTeacher;
 
   private SchoolClass(SchoolClassBuilder builder) {
@@ -47,6 +49,10 @@ public class SchoolClass {
     this.classTeacher = builder.classTeacher;
   }
 
+
+  public static SchoolClassBuilder builder() {
+    return new SchoolClassBuilder();
+  }
 
   /**
    * Gets school class id.
@@ -127,6 +133,10 @@ public class SchoolClass {
 
     private String name;
     private Teacher classTeacher;
+
+    private SchoolClassBuilder(){
+
+    }
 
 
     public SchoolClassBuilder setName(String name) {

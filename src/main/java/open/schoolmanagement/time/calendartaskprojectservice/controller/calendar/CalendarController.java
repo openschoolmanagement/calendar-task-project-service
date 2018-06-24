@@ -33,26 +33,26 @@ public class CalendarController {
   @Autowired
   private CalendarService calendarService;
 
-  @PostMapping(path = "/appointment/add")
-  public @ResponseStatus
-  Appointment addAppointment(@RequestParam Date start, @RequestParam Date end,
-                             @RequestParam String subject, @RequestParam String description) {
-    return calendarService.createAppointment(start, end, subject, description);
-  }
-
-
-  @GetMapping(path = "/appointment/")
-  Collection<Appointment> listAppointments() {
-
-    //    Person person = Person.builder()
-    //        .personId(123L)
-    //        .emailAddress("abcd@abc.de")
-    //        .firstName("Heinz")
-    //        .lastName("Becker")
-    //        .build();
-
-    return calendarService.listAppointmentsForUser(null);
-  }
+//  @PostMapping(path = "/appointment/add")
+//  public @ResponseStatus
+//  Appointment addAppointment(@RequestParam Date start, @RequestParam Date end,
+//                             @RequestParam String subject, @RequestParam String description) {
+//    return calendarService.createAppointment(start, end, subject, description);
+//  }
+//
+//
+//  @GetMapping(path = "/appointment/")
+//  Collection<Appointment> listAppointments() {
+//
+//    //    Person person = Person.builder()
+//    //        .personId(123L)
+//    //        .emailAddress("abcd@abc.de")
+//    //        .firstName("Heinz")
+//    //        .lastName("Becker")
+//    //        .build();
+//
+//    return calendarService.listAppointmentsForUser(null);
+//  }
 
 
 }

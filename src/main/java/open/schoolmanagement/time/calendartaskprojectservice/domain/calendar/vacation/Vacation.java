@@ -20,6 +20,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,7 +34,12 @@ public class Vacation {
 
   @Id
   @GeneratedValue
+  @Column(name = "vacation_id")
   private Long id;
+
+
+  @Column(name = "vacation_description")
+  private String description;
 
   @Column(name = "start")
   private Date start;
@@ -41,7 +47,8 @@ public class Vacation {
   private Date end;
   @Column(name = "year")
   private int year;
-  @OneToOne(mappedBy = "state", fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "state")
   private State state;
   @Column(name = "slug")
   private String slug;
@@ -53,6 +60,10 @@ public class Vacation {
     this.year = builder.year;
     this.state = builder.state;
     this.slug = builder.slug;
+  }
+
+  public static VacationBuilder builder() {
+    return new VacationBuilder();
   }
 
   /**
@@ -198,6 +209,10 @@ public class Vacation {
     private State state;
     private String slug;
 
+
+    private VacationBuilder(){
+
+    }
 
     /**
      * Sets start.

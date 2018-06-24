@@ -38,17 +38,18 @@ public class TeacherTimeTable {
   @Column(name = "teachertimetable_id")
   private Long teacherTimetableId;
 
-  @OneToOne(mappedBy = "teacher")
+  @OneToOne
   @JoinColumn(name = "teacher_id")
   private Teacher teacher;
 
-  @OneToMany(mappedBy = "timetableentry", fetch = FetchType.LAZY)
-  private Collection<TimeTableEntry> timeTableEntries;
+  @OneToMany
+  @JoinColumn(name = "teachertimetable_id")
+  private Collection<TimeTableRelation> timeTableRelations;
 
 
   private TeacherTimeTable(TeacherTimeTableBuilder builder) {
     this.teacher = builder.teacher;
-    this.timeTableEntries = builder.timeTableEntries;
+    this.timeTableRelations = builder.timeTableRelations;
   }
 
   /**
@@ -92,47 +93,47 @@ public class TeacherTimeTable {
    *
    * @return the time table entries
    */
-  public Collection<TimeTableEntry> getTimeTableEntries() {
-    return timeTableEntries;
+  public Collection<TimeTableRelation> getTimeTableRelations() {
+    return timeTableRelations;
   }
 
   /**
    * Sets time table entries.
    *
-   * @param timeTableEntries the time table entries
+   * @param timeTableRelations; the time table entries
    */
-  public void setTimeTableEntries(Collection<TimeTableEntry> timeTableEntries) {
-    this.timeTableEntries = timeTableEntries;
+  public void setTimeTableRelations(Collection<TimeTableRelation> timeTableRelations) {
+    this.timeTableRelations = timeTableRelations;
   }
 
   /**
    * Add time table entries.
    *
-   * @param timeTableEntry the time table entry
+   * @param timeTableRelation the time table entry
    */
-  public void addTimeTableEntries(TimeTableEntry timeTableEntry) {
-    this.timeTableEntries.add(timeTableEntry);
+  public void addTimeTableRelations(TimeTableRelation timeTableRelation) {
+    this.timeTableRelations.add(timeTableRelation);
   }
 
   /**
    * Remove time table entry.
    *
-   * @param timeTableEntryId the time table entry id
+   * @param timeTableRelationId the time table entry id
    */
-  public void removeTimeTableEntry(Long timeTableEntryId) {
-    this.timeTableEntries.stream().filter(timeTableEntry -> Objects.equals(timeTableEntry
-        .getTimeTableEntryId(), timeTableEntryId))
+  public void removeTimeTableRelation(Long timeTableRelationId) {
+    this.timeTableRelations.stream().filter(timeTableEntry -> Objects.equals(timeTableEntry
+        .getTimeTableRelationId(), timeTableRelationId))
         .findFirst()
-        .ifPresent(this::removeTimeTableEntry);
+        .ifPresent(this::removeTimeTableRelation);
   }
 
   /**
    * Remove time table entry.
    *
-   * @param timeTableEntry the time table entry
+   * @param timeTableRelation the time table entry
    */
-  public void removeTimeTableEntry(TimeTableEntry timeTableEntry) {
-    this.timeTableEntries.remove(timeTableEntry);
+  public void removeTimeTableRelation(TimeTableRelation timeTableRelation) {
+    this.timeTableRelations.remove(timeTableRelation);
   }
 
   @Override
@@ -154,6 +155,10 @@ public class TeacherTimeTable {
     return Objects.hash(getTeacherTimetableId(), getTeacher());
   }
 
+  public static TeacherTimeTableBuilder builder(){
+    return new TeacherTimeTableBuilder();
+  }
+
 
   /**
    * The type Teacher time table builder.
@@ -161,7 +166,13 @@ public class TeacherTimeTable {
   public static final class TeacherTimeTableBuilder {
     private Long teacherTimetableId;
     private Teacher teacher;
-    private Collection<TimeTableEntry> timeTableEntries;
+    private Collection<TimeTableRelation> timeTableRelations;
+
+
+    private TeacherTimeTableBuilder(){
+
+    }
+
 
     /**
      * Sets teacher timetable id.
@@ -188,12 +199,12 @@ public class TeacherTimeTable {
     /**
      * Sets time table entries.
      *
-     * @param timeTableEntries the time table entries
+     * @param timeTableRelations; the time table entries
      * @return the time table entries
      */
-    public TeacherTimeTableBuilder setTimeTableEntries(
-        Collection<TimeTableEntry> timeTableEntries) {
-      this.timeTableEntries = timeTableEntries;
+    public TeacherTimeTableBuilder setTimeTableRelations(
+        Collection<TimeTableRelation> timeTableRelations) {
+      this.timeTableRelations = timeTableRelations;
       return this;
     }
 

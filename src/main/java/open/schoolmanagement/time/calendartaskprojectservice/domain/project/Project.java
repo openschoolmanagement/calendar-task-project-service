@@ -19,6 +19,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 
@@ -41,7 +43,8 @@ public class Project {
   @Column(name = "description")
   private String description;
 
-  @Column(name = "responsible")
+  @OneToOne
+  @JoinColumn(name = "responsible")
   private Person responsible;
 
   @Column(name = "project_start")

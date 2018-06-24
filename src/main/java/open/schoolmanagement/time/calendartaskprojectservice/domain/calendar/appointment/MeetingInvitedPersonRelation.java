@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
@@ -22,11 +24,13 @@ public class MeetingInvitedPersonRelation {
   @Column(name = "meeting_invitedperson_relation_id", nullable = false)
   private Long meetingInvitedPersonRelationId;
 
-  @OneToOne(mappedBy = "meeting_id", fetch = FetchType.LAZY)
+  @ManyToOne
+  @JoinColumn(name = "meeting_id", nullable = false)
   private Meeting meeting;
 
 
-  @OneToOne(mappedBy = "person_id", fetch = FetchType.LAZY)
+  @ManyToOne
+  @JoinColumn(name = "person_id", nullable = false)
   private Person person;
 
   /**
