@@ -17,7 +17,6 @@ import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -50,6 +49,10 @@ public class TeacherTimeTable {
   private TeacherTimeTable(TeacherTimeTableBuilder builder) {
     this.teacher = builder.teacher;
     this.timeTableRelations = builder.timeTableRelations;
+  }
+
+  public static TeacherTimeTableBuilder builder() {
+    return new TeacherTimeTableBuilder();
   }
 
   /**
@@ -100,7 +103,7 @@ public class TeacherTimeTable {
   /**
    * Sets time table entries.
    *
-   * @param timeTableRelations; the time table entries
+   * @param timeTableRelations the time table entries
    */
   public void setTimeTableRelations(Collection<TimeTableRelation> timeTableRelations) {
     this.timeTableRelations = timeTableRelations;
@@ -155,11 +158,6 @@ public class TeacherTimeTable {
     return Objects.hash(getTeacherTimetableId(), getTeacher());
   }
 
-  public static TeacherTimeTableBuilder builder(){
-    return new TeacherTimeTableBuilder();
-  }
-
-
   /**
    * The type Teacher time table builder.
    */
@@ -169,7 +167,7 @@ public class TeacherTimeTable {
     private Collection<TimeTableRelation> timeTableRelations;
 
 
-    private TeacherTimeTableBuilder(){
+    private TeacherTimeTableBuilder() {
 
     }
 
@@ -199,7 +197,7 @@ public class TeacherTimeTable {
     /**
      * Sets time table entries.
      *
-     * @param timeTableRelations; the time table entries
+     * @param timeTableRelations the time table entries
      * @return the time table entries
      */
     public TeacherTimeTableBuilder setTimeTableRelations(

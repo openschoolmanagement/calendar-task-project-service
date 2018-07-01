@@ -19,6 +19,7 @@ import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.app
 import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 import open.schoolmanagement.time.calendartaskprojectservice.repository.calendar.appointment.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,6 +27,7 @@ public class CalendarService {
 
 
   @Autowired
+  @Qualifier("appointmentRepository")
   private AppointmentRepository appointmentRepository;
 
   /**
@@ -81,7 +83,7 @@ public class CalendarService {
   public Collection<Appointment> listAppointementByDate(Date date, Person person) {
 
     if (date != null && person != null) {
-      return appointmentRepository.findByStartAndOwner(date, person.getPersonId());
+      return appointmentRepository.findByDayAndOwner(date, person.getPersonId());
     } else {
       return null;
     }

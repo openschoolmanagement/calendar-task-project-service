@@ -7,13 +7,11 @@ import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
 
@@ -52,7 +50,7 @@ public class Meeting {
   @JoinColumn(name = "organiser", nullable = false)
   private Person organiser;
 
-  @OneToMany(cascade=ALL, mappedBy="meeting")
+  @OneToMany(cascade = ALL, mappedBy = "meeting")
   private Collection<MeetingInvitedPersonRelation> invitedPersons;
 
   private Meeting(MeetingBuilder builder) {

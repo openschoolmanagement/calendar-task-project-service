@@ -13,7 +13,6 @@
 
 package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.timetable;
 
-
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -161,14 +160,18 @@ public class TimeTableRelation {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof TimeTableRelation)) return false;
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof TimeTableRelation)) {
+      return false;
+    }
     TimeTableRelation that = (TimeTableRelation) o;
-    return Objects.equals(getTimeTableRelationId(), that.getTimeTableRelationId()) &&
-        Objects.equals(getTimeTableEntry(), that.getTimeTableEntry()) &&
-        Objects.equals(getTimeTable(), that.getTimeTable()) &&
-        Objects.equals(getClassTimeTable(), that.getClassTimeTable()) &&
-        Objects.equals(getTeacherTimeTable(), that.getTeacherTimeTable());
+    return Objects.equals(getTimeTableRelationId(), that.getTimeTableRelationId())
+        && Objects.equals(getTimeTableEntry(), that.getTimeTableEntry())
+        && Objects.equals(getTimeTable(), that.getTimeTable())
+        && Objects.equals(getClassTimeTable(), that.getClassTimeTable())
+        && Objects.equals(getTeacherTimeTable(), that.getTeacherTimeTable());
   }
 
   @Override

@@ -3,7 +3,8 @@ package open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.ap
 import static org.assertj.core.api.Assertions.assertThat;
 
 import open.schoolmanagement.time.calendartaskprojectservice.domain.person.Person;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 

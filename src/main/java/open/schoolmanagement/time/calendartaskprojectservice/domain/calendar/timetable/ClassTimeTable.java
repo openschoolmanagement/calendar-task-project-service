@@ -17,7 +17,6 @@ import java.util.Collection;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -25,9 +24,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.classes.SchoolClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
 
 
+/**
+ * The type Class time table.
+ */
 @Entity
 @Table(name = "classtimetable")
 public class ClassTimeTable {
@@ -51,39 +52,84 @@ public class ClassTimeTable {
   }
 
 
+  /**
+   * Gets class time table id.
+   *
+   * @return the class time table id
+   */
   public Long getClassTimeTableId() {
     return classTimeTableId;
   }
 
+  /**
+   * Sets class time table id.
+   *
+   * @param classTimeTableId the class time table id
+   */
   public void setClassTimeTableId(Long classTimeTableId) {
     this.classTimeTableId = classTimeTableId;
   }
 
+  /**
+   * Gets school class.
+   *
+   * @return the school class
+   */
   public SchoolClass getSchoolClass() {
     return schoolClass;
   }
 
+  /**
+   * Sets school class.
+   *
+   * @param schoolClass the school class
+   */
   public void setSchoolClass(SchoolClass schoolClass) {
     this.schoolClass = schoolClass;
   }
 
+  /**
+   * Gets time table relations.
+   *
+   * @return the time table relations
+   */
   public Collection<TimeTableRelation> getTimeTableRelations() {
     return timeTableRelations;
   }
 
+  /**
+   * Sets time table entries.
+   *
+   * @param timeTableRelations the time table relations
+   */
   public void setTimeTableEntries(Collection<TimeTableRelation> timeTableRelations) {
     this.timeTableRelations = timeTableRelations;
   }
 
 
+  /**
+   * Add time table relation.
+   *
+   * @param timeTableRelation the time table relation
+   */
   public void addTimeTableRelation(TimeTableRelation timeTableRelation) {
     this.timeTableRelations.add(timeTableRelation);
   }
 
+  /**
+   * Remove time table relation.
+   *
+   * @param timeTableRelation the time table relation
+   */
   public void removeTimeTableRelation(TimeTableRelation timeTableRelation) {
     this.timeTableRelations.remove(timeTableRelation);
   }
 
+  /**
+   * Remove time table entry.
+   *
+   * @param timeTableRelationId the time table relation id
+   */
   public void removeTimeTableEntry(Long timeTableRelationId) {
     this.timeTableRelations.stream().filter(timeTableRelation -> Objects.equals(timeTableRelation
         .getTimeTableRelationId(), timeTableRelationId)).findFirst()
@@ -111,25 +157,51 @@ public class ClassTimeTable {
   }
 
 
+  /**
+   * The type Class time table builder.
+   */
   public static final class ClassTimeTableBuilder {
 
     private SchoolClass schoolClass;
     private Collection<TimeTableRelation> timeTableRelations;
 
+    /**
+     * Builder class time table builder.
+     *
+     * @return the class time table builder
+     */
     public static ClassTimeTableBuilder builder() {
       return new ClassTimeTableBuilder();
     }
 
+    /**
+     * Sets school class.
+     *
+     * @param schoolClass the school class
+     * @return the school class
+     */
     public ClassTimeTableBuilder setSchoolClass(SchoolClass schoolClass) {
       this.schoolClass = schoolClass;
       return this;
     }
 
-    public ClassTimeTableBuilder setTimeTableEntries(Collection<TimeTableRelation> timeTableRelations) {
+    /**
+     * Sets time table entries.
+     *
+     * @param timeTableRelations the time table relations
+     * @return the time table entries
+     */
+    public ClassTimeTableBuilder setTimeTableEntries(Collection<TimeTableRelation>
+                                                         timeTableRelations) {
       this.timeTableRelations = timeTableRelations;
       return this;
     }
 
+    /**
+     * Build class time table.
+     *
+     * @return the class time table
+     */
     public ClassTimeTable build() {
       return new ClassTimeTable(this);
     }
