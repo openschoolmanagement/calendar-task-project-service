@@ -1,11 +1,13 @@
 package open.schoolmanagement.time.calendartaskprojectservice.controller.calendar;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import open.schoolmanagement.time.calendartaskprojectservice.service.calendar.CalendarService;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -23,14 +25,17 @@ class CalendarControllerTest {
   @Autowired
   private WebApplicationContext webApplicationContext;
 
+  @MockBean
+  private CalendarService calendarService;
+
   @Autowired
   private MockMvc mockMvc;
 
-  @BeforeEach
+  @Before
   void setUp() {
   }
 
-  @AfterEach
+  @After
   void tearDown() {
   }
 

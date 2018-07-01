@@ -16,16 +16,17 @@ package open.schoolmanagement.time.calendartaskprojectservice.repository.calenda
 import java.util.Collection;
 import java.util.Date;
 import open.schoolmanagement.time.calendartaskprojectservice.domain.calendar.appointment.Appointment;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
 
 /**
  * The interface Appointment repository.
  */
-@Repository
-public interface AppointmentRepository extends CrudRepository<Appointment, Long> {
+@Repository("appointmentRepository")
+public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
   /**
    * Find appointment by subject and for the owning person.
@@ -35,20 +36,33 @@ public interface AppointmentRepository extends CrudRepository<Appointment, Long>
    * @return Appointments collection
    */
   @Query("SELECT a FROM Appointment a where a.appointmentSubject LIKE :subject AND a.owner = :owner")
-  Collection<Appointment> findBySubjectAndOwner(@Param("subject")String subject, @Param("owner")
+  Collection<Appointment> findBySubjectAndOwner(@Param("subject") String subject, @Param("owner")
       Long person);
 
+
+  @Query("SELECT a FROM Appointment a where a.appointmentSubject LIKE :term "
+      + "or a.description LIKE"
+      + " term AND a.owner = :owner")
+  Collection<Appointment> findByTermAndOwner(@Param("term") String term, @Param("owner")
+      Long person);
 
   /**
    * Find appointment by Start Time and for the owning person.
    *
-   * @param start    start Date of the appointment
+   * @param pit    start Date of the appointment
    * @param person owner id of the appointment
    * @return Appointments collection
    */
-  @Query("SELECT a FROM Appointment a where a.start like :start and a.owner = :person")
-  Collection<Appointment> findByStartAndOwner(@Param("start") Date start, @Param("person") Long
+  @Query("SELECT a FROM Appointment a where ( a.start <= :pit and a.end >= :pit ) and a.owner = "
+      + ":person")
+  Collection<Appointment> findByDayAndOwner(@Param("pit") Date pit, @Param("person") Long
       person);
+
+
+  @Query("SELECT a FROM Appointment a where ( a.start <= :begin_range and a.end >= :end_range ) "
+      + "and a.owner = :person")
+  Collection<Appointment> findByDateRangeAndOwner(@Param("begin_range") Date begin, @Param
+      ("end_range") Date end, @Param("person") Long person);
 
 
   /**
