@@ -1,6 +1,5 @@
 package open.schoolmanagement.time.calendartaskprojectservice.domain.person;
 
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

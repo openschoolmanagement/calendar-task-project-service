@@ -13,7 +13,8 @@ public class SchedulerConfiguration {
 
   private final Integer connectionPoolSize;
 
-  public SchedulerConfiguration(@Value("${spring.datasource.maximum-pool-size}") Integer connectionPoolSize) {
+  public SchedulerConfiguration(@Value("${spring.datasource.maximum-pool-size}")
+                                    Integer connectionPoolSize) {
     this.connectionPoolSize = connectionPoolSize;
   }
 
