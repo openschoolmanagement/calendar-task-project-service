@@ -21,7 +21,7 @@ public class CalendarTaskProjectServiceApplicationTests {
     initMocks(this);
   }
 
-  @Ignore
+
   @Test
   public void contextLoads() {
 
