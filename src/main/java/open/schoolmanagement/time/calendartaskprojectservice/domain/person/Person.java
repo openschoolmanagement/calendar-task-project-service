@@ -1,6 +1,7 @@
 package open.schoolmanagement.time.calendartaskprojectservice.domain.person;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,6 +11,7 @@ import lombok.Data;
 @Data
 @Builder
 @Table(name = "person")
+@Entity
 public class Person {
 
   @Id

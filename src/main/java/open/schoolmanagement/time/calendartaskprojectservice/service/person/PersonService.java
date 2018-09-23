@@ -10,11 +10,10 @@ import reactor.core.publisher.Mono;
 @Service
 public class PersonService {
 
-
+  @Autowired
   private PersonRepository personRepository;
 
 
-  @Autowired
   private PersonService(PersonRepository personRepository) {
     this.personRepository = personRepository;
   }
